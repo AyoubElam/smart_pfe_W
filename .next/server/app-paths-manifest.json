@@ -1,0 +1,6 @@
+{
+  "/page": "app/page.js",
+  "/PlanifierSoutenance/page": "app/PlanifierSoutenance/page.js",
+  "/GestionJurys/page": "app/GestionJurys/page.js",
+  "/ListeSoutenances/page": "app/ListeSoutenances/page.js"
+}

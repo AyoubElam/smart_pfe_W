@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import { useState, useEffect } from "react";
@@ -62,9 +63,15 @@ export default function PlanifierSoutenance() {
   const [toast, setToast] = useState<Toast | null>(null);
 
   const rooms: Room[] = [
-    { id: "1", name: "Salle 12" },
-    { id: "2", name: "Salle 42" },
-    { id: "3", name: "Salle 21" },
+    { id: "Salle 1", name: "Salle 1" },
+    { id: "Salle 2", name: "Salle 2" },
+    { id: "Salle 3", name: "Salle 3" },
+    { id: "Salle 4", name: "Salle 4" },
+    { id: "Salle 5", name: "Salle 5" },
+    { id: "Salle 6", name: "Salle 6" },
+    { id: "Salle 7", name: "Salle 7" },
+    { id: "Salle 8", name: "Salle 8" },
+    { id: "Salle 9", name: "Salle 9" },
   ];
 
   useEffect(() => {
@@ -113,48 +120,52 @@ export default function PlanifierSoutenance() {
   };
 
   const onAddSoutenance = async () => {
-    const isFormValid = Object.values(formData).every((value) =>
-      typeof value === "string" ? value.trim() !== "" : value !== "" && value !== null
-    );
+    console.log(formData); // Inspect formData before sending
+// Ensure juryIds is an array of numbers
+const juryIds = formData.jury.map((juryId: string) => parseInt(juryId, 10)); 
+
+
+try {
+  const response = await fetch("http://localhost:5000/api/soutenance", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      date: new Date(formData.date).toISOString(),
+      time: formData.time,
+      location: formData.location,
+      juryIds: juryIds, // Send as an array of IDs
+      group: parseInt(formData.group, 10),
+      status: "Pending",
+    }),
+  });
   
-    if (!isFormValid) {
-      showToast("Veuillez remplir tous les champs", "error");
-      return;
-    }
-  
-    console.log("Form data before submission:", formData); // Debug log
-  
-    try {
-      setLoading(true);
-      const response = await fetch("http://localhost:5000/api/soutenances", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          date: formData.date,
-          time: formData.time,
-          location: formData.location,
-          jury: formData.jury, // Jury is passed as a string (idJury is varchar)
-          group: parseInt(formData.group), // Group is passed as an integer (idGroupe is int)
-          status: "pending", // Assuming the status is "pending"
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error("Erreur lors de la planification de la soutenance");
-      }
-  
-      const data = await response.json();
-      showToast(data.message, "success");
-      setFormData(INITIAL_FORM_STATE); // Reset form after submission
-    } catch (error) {
-      showToast("Erreur lors de la planification", "error");
-      console.error("Error:", error);
-    } finally {
-      setLoading(false);
-    }
+  if (!response.ok) {
+    const error = await response.json();
+    console.error("Error:", error);
+    setToast({
+      type: "error",
+      message: error.message || "An error occurred.",
+    });
+  } else {
+    const data = await response.json();
+    console.log("Soutenance Added:", data);
+    setToast({
+      type: "success",
+      message: "Soutenance added successfully!",
+    });
+  }
+} catch (error) {
+  console.error("Request failed:", error);
+  setToast({
+    type: "error",
+    message: "Failed to add soutenance. Please try again later.",
+  });
+}
+
   };
+  
   
   
 
@@ -180,23 +191,27 @@ export default function PlanifierSoutenance() {
     <div className="p-12 bg-gray-50 min-h-screen relative">
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed top-4 right-4 z-50 animate-fade-in">
-          <Alert
-            variant={toast.type === "error" ? "destructive" : "default"}
-            className="flex items-center justify-between p-4 text-lg"
-          >
-            <AlertDescription>{toast.message}</AlertDescription>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-6 w-6"
-              onClick={() => setToast(null)}
-            >
-              <X className="h-6 w-6" />
-            </Button>
-          </Alert>
-        </div>
-      )}
+  <div className="fixed top-4 right-4 z-50 animate-fade-in">
+    <Alert
+      variant={toast.type === "error" ? "destructive" : "default"}
+      className={`flex items-center justify-between p-4 text-lg rounded-lg ${
+        toast.type === "success" 
+          ? "bg-green-500 text-white" // Green background for success
+          : "bg-red-500 text-white"    // Red background for errors
+      }`}
+    >
+      <AlertDescription className="font-semibold">{toast.message}</AlertDescription>
+      <Button
+        variant="ghost"
+        size="icon"
+        className="h-6 w-6"
+        onClick={() => setToast(null)}
+      >
+        <X className="h-6 w-6" />
+      </Button>
+    </Alert>
+  </div>
+)}
 
       <div className="max-w-7xl mx-auto">
         <h1 className="text-5xl font-bold text-gray-800 mb-12 text-center">
@@ -207,7 +222,7 @@ export default function PlanifierSoutenance() {
           {/* Group Selection */}
           <Card className="p-6">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-xl text-center flex justify-center">
+              <CardTitle className="flex items-center gap-3 text-xl text-center justify-center">
                 <Users className="h-6 w-6" />
                 Groupes
               </CardTitle>
@@ -295,35 +310,65 @@ export default function PlanifierSoutenance() {
             </CardContent>
           </Card>
 
-          {/* Jury Selection */}
           <Card className="p-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-xl justify-center">
-                <User className="h-6 w-6" />
-                Jury
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Select
-                value={formData.jury}
-                onValueChange={(value) =>
-                  setFormData({ ...formData, jury: value })
-                }
-                className="text-lg"
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Sélectionner un jury" />
-                </SelectTrigger>
-                <SelectContent>
-                  {jurys.map((jury) => (
-                    <SelectItem key={jury.idJury} value={jury.idJury.toString()}>
-                      {jury.nom}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </CardContent>
-          </Card>
+  <CardHeader>
+    <CardTitle className="flex items-center gap-3 text-xl justify-center">
+      <User className="h-6 w-6" />
+      Jury
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <div className="space-y-2">
+      {jurys.map((jury) => (
+        <div key={jury.idJury} className="flex items-center">
+          <input
+            type="checkbox"
+            id={`jury-${jury.idJury}`}
+            value={jury.idJury}
+            checked={formData.jury.includes(jury.idJury.toString())}
+            onChange={(e) => {
+              const isChecked = e.target.checked;
+              let newSelectedJuries: string[];
+
+              if (isChecked) {
+                // Add selected jury to array if it's not already selected
+                newSelectedJuries = [...formData.jury, jury.idJury.toString()];
+              } else {
+                // Remove the unselected jury from array
+                newSelectedJuries = formData.jury.filter(
+                  (id: string) => id !== jury.idJury.toString()
+                );
+              }
+
+              // Only allow up to 2 juries to be selected
+              if (newSelectedJuries.length <= 2) {
+                setFormData({ ...formData, jury: newSelectedJuries });
+              } else {
+                alert("You can only select up to 2 juries.");
+              }
+            }}
+            className="mr-2"
+          />
+          <label htmlFor={`jury-${jury.idJury}`} className="text-lg">
+            {jury.nom}
+          </label>
+        </div>
+      ))}
+    </div>
+
+    {/* Display selected juries */}
+    {formData.jury.length > 0 && (
+      <div className="mt-4">
+        <strong>Selected Juries:</strong>{" "}
+        {formData.jury
+          .map((id: string) => jurys.find((jury) => jury.idJury.toString() === id)?.nom)
+          .join(", ")}
+      </div>
+    )}
+  </CardContent>
+</Card>
+
+
         </div>
 
         <SubmitButton onAddSoutenance={onAddSoutenance} />

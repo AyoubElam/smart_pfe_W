@@ -593,9 +593,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
-    "default": (()=>SoutenanceTable)
+    "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/router.js [app-client] (ecmascript)"); // Correct import for useRouter hook
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/table.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/card.tsx [app-client] (ecmascript)");
@@ -606,9 +607,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/search.js [app-client] (ecmascript) <export default as Search>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-client] (ecmascript) <export default as Users>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/pen.js [app-client] (ecmascript) <export default as Edit2>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2d$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarClock$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/calendar-clock.js [app-client] (ecmascript) <export default as CalendarClock>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/circle-check.js [app-client] (ecmascript) <export default as CheckCircle2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/clock.js [app-client] (ecmascript) <export default as Clock>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XCircle$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/circle-x.js [app-client] (ecmascript) <export default as XCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-client] (ecmascript) <export default as AlertCircle>");
 ;
 var _s = __turbopack_refresh__.signature();
+"use client";
 ;
 ;
 ;
@@ -617,49 +623,101 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), onDelete = (id)=>console.log(`Delete soutenance ${id}`) }) {
+;
+const SoutenanceTable = ({ soutenances, onEdit = (id)=>console.log(`Edit soutenance ${id}`), onDelete = (id)=>console.log(`Delete soutenance ${id}`) })=>{
     _s();
-    const [soutenances, setSoutenances] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])(); // Correct place to initialize useRouter
+    const handleEditClick = (id)=>{
+        router.push(`/edit-soutenance/${id}`); // Fix template literal
+    };
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "SoutenanceTable.useEffect": ()=>{
-            async function fetchSoutenances() {
-                try {
-                    const response = await fetch("http://localhost:5000/api/soutenance"); // Updated endpoint
-                    const data = await response.json();
-                    setSoutenances(data);
-                } catch (error) {
-                    console.error("Error fetching soutenances:", error);
-                }
-            }
-            fetchSoutenances();
+    const filteredSoutenances = soutenances.filter((soutenance)=>soutenance.nomGroupe.toLowerCase().includes(searchTerm.toLowerCase()));
+    const getStatusConfig = (status)=>{
+        switch(status){
+            case "Scheduled":
+                return {
+                    color: "text-blue-700 dark:text-blue-300",
+                    bg: "bg-blue-100 dark:bg-blue-900/50",
+                    hoverBg: "hover:bg-blue-200 dark:hover:bg-blue-900/70",
+                    icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2d$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarClock$3e$__["CalendarClock"], {
+                        className: "w-3.5 h-3.5"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                        lineNumber: 79,
+                        columnNumber: 17
+                    }, this),
+                    text: "Scheduled"
+                };
+            case "Completed":
+                return {
+                    color: "text-green-700 dark:text-green-300",
+                    bg: "bg-green-100 dark:bg-green-900/50",
+                    hoverBg: "hover:bg-green-200 dark:hover:bg-green-900/70",
+                    icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
+                        className: "w-3.5 h-3.5"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                        lineNumber: 87,
+                        columnNumber: 17
+                    }, this),
+                    text: "Completed"
+                };
+            case "Pending":
+                return {
+                    color: "text-yellow-700 dark:text-yellow-300",
+                    bg: "bg-yellow-100 dark:bg-yellow-900/50",
+                    hoverBg: "hover:bg-yellow-200 dark:hover:bg-yellow-900/70",
+                    icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__["Clock"], {
+                        className: "w-3.5 h-3.5"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                        lineNumber: 95,
+                        columnNumber: 17
+                    }, this),
+                    text: "Pending"
+                };
+            case "Cancelled":
+                return {
+                    color: "text-red-700 dark:text-red-300",
+                    bg: "bg-red-100 dark:bg-red-900/50",
+                    hoverBg: "hover:bg-red-200 dark:hover:bg-red-900/70",
+                    icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XCircle$3e$__["XCircle"], {
+                        className: "w-3.5 h-3.5"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                        lineNumber: 103,
+                        columnNumber: 17
+                    }, this),
+                    text: "Cancelled"
+                };
+            default:
+                return {
+                    color: "text-gray-700 dark:text-gray-300",
+                    bg: "bg-gray-100 dark:bg-gray-800",
+                    hoverBg: "hover:bg-gray-200 dark:hover:bg-gray-800/70",
+                    icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                        className: "w-3.5 h-3.5"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                        lineNumber: 111,
+                        columnNumber: 17
+                    }, this),
+                    text: "Unknown"
+                };
         }
-    }["SoutenanceTable.useEffect"], []);
-    const filteredSoutenances = soutenances.filter((soutenance)=>{
-        const groupMatch = soutenance.nomGroupe.toLowerCase().includes(searchTerm.toLowerCase());
-        const juryNamesMatch = typeof soutenance.juryNames === "string" ? soutenance.juryNames.toLowerCase().includes(searchTerm.toLowerCase()) : Array.isArray(soutenance.juryNames) && soutenance.juryNames.some((name)=>name.toLowerCase().includes(searchTerm.toLowerCase()));
-        return groupMatch || juryNamesMatch;
-    });
-    if (filteredSoutenances.length === 0) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-            className: "w-full",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                className: "pt-6",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    children: "Aucune soutenance disponible pour le moment"
-                }, void 0, false, {
-                    fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                    lineNumber: 61,
-                    columnNumber: 11
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                lineNumber: 60,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
+    };
+    function StatusBadge({ status }) {
+        const config = getStatusConfig(status);
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
+            variant: "outline",
+            className: `${config.bg} ${config.color} ${config.hoverBg} border-0 font-medium gap-1.5 px-2.5 py-0.5 transition-colors duration-200 inline-flex items-center cursor-default select-none shadow-sm`,
+            children: [
+                config.icon,
+                config.text
+            ]
+        }, void 0, true, {
             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-            lineNumber: 59,
+            lineNumber: 120,
             columnNumber: 7
         }, this);
     }
@@ -675,7 +733,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                             children: "Soutenances"
                         }, void 0, false, {
                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                            lineNumber: 71,
+                            lineNumber: 134,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -685,7 +743,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                     className: "absolute left-2 top-2.5 h-5 w-5 text-muted-foreground"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                    lineNumber: 73,
+                                    lineNumber: 136,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -695,24 +753,24 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                     className: "pl-10 text-lg"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 137,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                            lineNumber: 72,
+                            lineNumber: 135,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                    lineNumber: 70,
+                    lineNumber: 133,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                lineNumber: 69,
+                lineNumber: 132,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -730,7 +788,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                             children: "Date"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                            lineNumber: 88,
+                                            lineNumber: 151,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -738,7 +796,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                             children: "Heure"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                            lineNumber: 89,
+                                            lineNumber: 152,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -746,7 +804,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                             children: "Lieu"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                            lineNumber: 90,
+                                            lineNumber: 153,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -754,7 +812,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                             children: "Groupe"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                            lineNumber: 91,
+                                            lineNumber: 154,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -762,7 +820,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                             children: "Jury"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 155,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -770,7 +828,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                             children: "Statut"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                            lineNumber: 93,
+                                            lineNumber: 156,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -778,22 +836,23 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                             children: "Actions"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                            lineNumber: 94,
+                                            lineNumber: 157,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 150,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                lineNumber: 86,
+                                lineNumber: 149,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
                                 children: filteredSoutenances.map((soutenance)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                                        className: "transition-colors hover:bg-muted/50",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                                 className: "font-medium text-lg",
@@ -804,7 +863,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                                 })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                lineNumber: 100,
+                                                lineNumber: 163,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -812,7 +871,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                                 children: soutenance.time
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 170,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -820,7 +879,7 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                                 children: soutenance.location
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 171,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -830,12 +889,12 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                                     children: soutenance.nomGroupe
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                    lineNumber: 110,
+                                                    lineNumber: 173,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                lineNumber: 109,
+                                                lineNumber: 172,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -851,150 +910,232 @@ function SoutenanceTable({ onEdit = (id)=>console.log(`Edit soutenance ${id}`), 
                                                                             className: "h-5 w-5 text-muted-foreground"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                                            lineNumber: 119,
+                                                                            lineNumber: 182,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                             className: "truncate max-w-[250px] text-lg",
-                                                                            children: Array.isArray(soutenance.juryNames) ? soutenance.juryNames.join(", ") : soutenance.juryNames
+                                                                            children: soutenance.juryNames
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                                            lineNumber: 120,
+                                                                            lineNumber: 183,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                                    lineNumber: 118,
+                                                                    lineNumber: 181,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                                lineNumber: 117,
+                                                                lineNumber: 180,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                     className: "max-w-xs text-lg",
-                                                                    children: Array.isArray(soutenance.juryNames) ? soutenance.juryNames.join(", ") : soutenance.juryNames
+                                                                    children: soutenance.juryNames
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                                    lineNumber: 128,
+                                                                    lineNumber: 189,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                                lineNumber: 127,
+                                                                lineNumber: 188,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                        lineNumber: 116,
+                                                        lineNumber: 179,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                    lineNumber: 115,
+                                                    lineNumber: 178,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                lineNumber: 114,
+                                                lineNumber: 177,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                children: soutenance.status
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StatusBadge, {
+                                                    status: soutenance.status
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                    lineNumber: 196,
+                                                    columnNumber: 21
+                                                }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                lineNumber: 137,
+                                                lineNumber: 195,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex items-center gap-2",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                            variant: "ghost",
-                                                            size: "icon",
-                                                            className: "hover:bg-muted",
-                                                            onClick: ()=>onEdit(soutenance.id),
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__["Edit2"], {
-                                                                className: "h-5 w-5"
-                                                            }, void 0, false, {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipProvider"], {
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipTrigger"], {
+                                                                        asChild: true,
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                                            variant: "ghost",
+                                                                            size: "icon",
+                                                                            className: "hover:bg-muted",
+                                                                            onClick: ()=>handleEditClick(soutenance.id),
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__["Edit2"], {
+                                                                                    className: "h-5 w-5"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                                    lineNumber: 209,
+                                                                                    columnNumber: 31
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    className: "sr-only",
+                                                                                    children: "Modifier la soutenance"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                                    lineNumber: 210,
+                                                                                    columnNumber: 31
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                            lineNumber: 203,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                        lineNumber: 202,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                            className: "text-lg",
+                                                                            children: "Modifier la soutenance"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                            lineNumber: 214,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                        lineNumber: 213,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                                lineNumber: 146,
+                                                                lineNumber: 201,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                            lineNumber: 140,
+                                                            lineNumber: 200,
                                                             columnNumber: 23
                                                         }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                            variant: "ghost",
-                                                            size: "icon",
-                                                            className: "hover:bg-muted",
-                                                            onClick: ()=>onDelete(soutenance.id),
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
-                                                                className: "h-5 w-5"
-                                                            }, void 0, false, {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipProvider"], {
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipTrigger"], {
+                                                                        asChild: true,
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DeleteDialog, {
+                                                                            onDelete: ()=>onDelete(soutenance.id),
+                                                                            soutenanceId: soutenance.id
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                            lineNumber: 222,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                        lineNumber: 221,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tooltip$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TooltipContent"], {
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                            className: "text-lg",
+                                                                            children: "Supprimer la soutenance"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                            lineNumber: 228,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
+                                                                        lineNumber: 227,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                                lineNumber: 154,
+                                                                lineNumber: 220,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                            lineNumber: 148,
+                                                            lineNumber: 219,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                    lineNumber: 139,
+                                                    lineNumber: 199,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                                lineNumber: 138,
+                                                lineNumber: 198,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, soutenance.id, true, {
                                         fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                        lineNumber: 99,
+                                        lineNumber: 162,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                                lineNumber: 97,
+                                lineNumber: 160,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                        lineNumber: 85,
+                        lineNumber: 148,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                    lineNumber: 84,
+                    lineNumber: 147,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-                lineNumber: 83,
+                lineNumber: 146,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/ListeSoutenances/SoutenanceTable.tsx",
-        lineNumber: 68,
+        lineNumber: 131,
         columnNumber: 5
     }, this);
-}
-_s(SoutenanceTable, "DuV97rAgU8amrrOGpI3YvYKzZac=");
+};
+_s(SoutenanceTable, "vmINxgdyJLB8dOBIMAzpwEJkNrU=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = SoutenanceTable;
+const __TURBOPACK__default__export__ = SoutenanceTable;
 var _c;
 __turbopack_refresh__.register(_c, "SoutenanceTable");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {

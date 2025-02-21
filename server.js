@@ -4,10 +4,10 @@ import jurys from "./app/pages/api/jurys.js";
 import groups from "./app/pages/api/groups.js";
 import soutenance from "./app/pages/api/soutenance.js";
 
-
 const app = express();
 
 // Middleware
+app.use(express.json()); // Place this before your routes
 app.use(cors({ origin: "http://localhost:3000", methods: ["GET", "POST"], allowedHeaders: ["Content-Type"] }));
 
 // Routes

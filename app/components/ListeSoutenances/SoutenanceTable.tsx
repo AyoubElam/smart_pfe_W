@@ -37,6 +37,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import router from "@/app/pages/api/soutenance";
+import Link from "next/link";
 
 interface Soutenance {
   id: number;
@@ -47,6 +49,7 @@ interface Soutenance {
   juryNames: string[] | string | null;  // Allowing null in case no jury is assigned
   status: string;
 }
+
 
 
 interface SoutenanceTableProps {
@@ -296,15 +299,16 @@ export default function SoutenanceTable({
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="hover:bg-muted"
-                              onClick={() => onEdit(soutenance.id)}
-                            >
-                              <Edit2 className="h-5 w-5" />
-                              <span className="sr-only">Modifier la soutenance</span>
-                            </Button>
+                          <Link href={`/edit-soutenance/${soutenance.id}`} passHref>
+                      <Button 
+                        variant="ghost"
+                        size="icon"
+                        className="hover:bg-muted"
+                      >
+                        <Edit2 className="h-5 w-5" />
+                        <span className="sr-only">Modifier la soutenance</span>
+                      </Button>
+                    </Link>
                           </TooltipTrigger>
                           <TooltipContent>
                             <p className="text-lg">Modifier la soutenance</p>

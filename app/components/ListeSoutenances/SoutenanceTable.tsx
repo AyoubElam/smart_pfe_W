@@ -26,10 +26,10 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useRouter } from "next/navigation"
+import soutenance from "@/app/pages/api/soutenance"
 
 interface Soutenance {
-  [x: string]: any
-  id: number
+  idSoutenance: number
   date: string
   time: string
   location: string
@@ -134,10 +134,10 @@ function StatusBadge({ status }: { status: string }) {
 
 function DeleteDialog({
   onDelete,
-  soutenanceId,
+  Idsoutenance,
 }: {
   onDelete: () => void
-  soutenanceId: number
+  Idsoutenance: number
 }) {
   return (
     <AlertDialog>
@@ -228,19 +228,37 @@ export default function SoutenancesPage() {
   
   
 
+  const [error, setError] = useState<string | null>(null);
+
   const handleDelete = async (id: number) => {
+    if (!id) {
+      setError("Données de soutenance manquantes");
+      return;
+    }
+  
+
+  
     try {
       const response = await fetch(`http://localhost:5000/api/soutenance/${id}`, {
-        method: "DELETE",
-      })
-
-      if (!response.ok) throw new Error("Failed to delete soutenance")
-
-      await fetchSoutenances()
+        method: 'DELETE',
+      });
+      
+  
+      if (!response.ok) {
+        const errorData = await response.text();
+        throw new Error(`Erreur serveur: ${errorData}`);
+      }
+  // Rafraîchir la liste
+await fetchSoutenances()
+      console.log("✅ Soutenance supprimée avec succès!");
+      router.push("/ListeSoutenances"); // Redirect to list page after successful deletion
     } catch (error) {
-      console.error("Error deleting soutenance:", error)
+      const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue";
+      console.error("❌ Erreur de suppression:", errorMessage);
+      setError(errorMessage); // Show error message
     }
-  }
+  };
+  
 
   if (!soutenances || soutenances.length === 0) {
     return (
@@ -290,7 +308,7 @@ export default function SoutenancesPage() {
                 .filter((s) => s.nomGroupe.toLowerCase().includes(searchTerm.toLowerCase()))
                 .map((soutenance, index) => (
                   <TableRow
-                    key={soutenance.id ?? `soutenance-${index}`}
+                    key={soutenance.idSoutenance ?? `soutenance-${index}`}
                     className="transition-colors hover:bg-muted/50"
                   >
                     <TableCell className="font-medium text-lg">
@@ -357,7 +375,7 @@ export default function SoutenancesPage() {
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <DeleteDialog onDelete={() => handleDelete(soutenance.id)} soutenanceId={soutenance.id} />
+                              <DeleteDialog onDelete={() => handleDelete(soutenance.idSoutenance)} Idsoutenance={soutenance.idSoutenance} />
                             </TooltipTrigger>
                             <TooltipContent>
                               <p className="text-lg">Supprimer la soutenance</p>
@@ -374,5 +392,9 @@ export default function SoutenancesPage() {
       </CardContent>
     </Card>
   )
+}
+
+function setError(arg0: string) {
+  throw new Error("Function not implemented.")
 }
 

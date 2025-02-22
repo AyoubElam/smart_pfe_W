@@ -457,6 +457,40 @@ body {
   color: hsl(var(--foreground));
 }
 
+.container {
+  width: 100%;
+}
+
+@media (width >= 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (width >= 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (width >= 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (width >= 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (width >= 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1099,6 +1133,10 @@ body {
   max-width: 20rem;
 }
 
+.max-w-3xl {
+  max-width: 48rem;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -1221,6 +1259,10 @@ body {
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -1357,6 +1399,12 @@ body {
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
 .overflow-auto {
   overflow: auto;
 }
@@ -1444,6 +1492,10 @@ body {
   border-width: 1.5px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
 .border-y {
   border-top-width: 1px;
   border-bottom-width: 1px;
@@ -1521,6 +1573,10 @@ body {
 
 .border-transparent {
   border-color: #0000;
+}
+
+.border-muted {
+  border-color: hsl(var(--muted));
 }
 
 .border-l-transparent {
@@ -1811,6 +1867,11 @@ body {
   padding-bottom: 1.5rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pb-3 {
   padding-bottom: .75rem;
 }
@@ -1937,6 +1998,11 @@ body {
 .text-xs {
   font-size: .75rem;
   line-height: 1rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .font-bold {
@@ -2326,6 +2392,10 @@ body {
   --tw-enter-scale: .95;
 }
 
+.slide-in-from-top-2 {
+  --tw-enter-translate-y: -.5rem;
+}
+
 .duration-1000 {
   animation-duration: 1s;
 }
@@ -2444,6 +2514,10 @@ html:is(class *) {
   z-index: 20;
 }
 
+.hover\:border-primary:hover {
+  border-color: hsl(var(--primary));
+}
+
 .hover\:bg-accent:hover {
   background-color: hsl(var(--accent));
 }
@@ -2555,6 +2629,11 @@ html:is(class *) {
 .hover\:bg-yellow-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(254 240 138 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-blue-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-accent-foreground:hover {
@@ -3504,6 +3583,10 @@ html:is(class *) {
 
 .dark\:hover\:bg-yellow-900\/70:hover:is(class *) {
   background-color: #713f12b3;
+}
+
+.dark\:hover\:bg-blue-900\/30:hover:is(class *) {
+  background-color: #1e3a8a4d;
 }
 
 @media (width >= 640px) {

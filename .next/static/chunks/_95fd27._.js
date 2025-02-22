@@ -561,11 +561,11 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-/* eslint-disable @typescript-eslint/no-explicit-any */ /* eslint-disable @typescript-eslint/no-unused-vars */ __turbopack_esm__({
+__turbopack_esm__({
     "default": (()=>EditSoutenancePage)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-client] (ecmascript)"); // Still use next/navigation for navigation
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/card.tsx [app-client] (ecmascript)");
@@ -588,41 +588,20 @@ var _s = __turbopack_refresh__.signature();
 ;
 function EditSoutenancePage({ params }) {
     _s();
+    const { id } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["use"])(params);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const [soutenance, setSoutenance] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [groups, setGroups] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [juryList, setJuryList] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [selectedGroupId, setSelectedGroupId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [selectedJuryIds, setSelectedJuryIds] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const handleSave = async ()=>{
-        console.log("Soutenance before save:", soutenance);
-        if (!soutenance || !soutenance.idSoutenance) {
-            setError("ID is missing or soutenance is not loaded.");
-            return;
-        }
-        try {
-            console.log("Sending PUT request...");
-            const response = await fetch(`http://localhost:5000/api/soutenance/${soutenance.idSoutenance}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(soutenance)
-            });
-            if (!response.ok) {
-                throw new Error("Failed to update soutenance");
-            }
-            console.log("Soutenance updated successfully!");
-            await router.push("/"); // Ensure this runs after the successful request
-        } catch (error) {
-            console.error("Error updating soutenance:", error);
-            setError("Une erreur est survenue lors de la mise à jour");
-        }
-    };
-    // Inside the useEffect where you fetch data, log soutenanceData
+    // Fetch all necessary data
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "EditSoutenancePage.useEffect": ()=>{
-            if (!params.id) {
-                setError("ID is missing in the URL");
+            if (!id) {
+                setError("ID manquant dans l'URL");
                 return;
             }
             const fetchData = {
@@ -630,23 +609,38 @@ function EditSoutenancePage({ params }) {
                     try {
                         setIsLoading(true);
                         setError(null);
-                        const soutenanceResponse = await fetch(`http://localhost:5000/api/soutenance/${params.id}`);
+                        // Fetch soutenance data
+                        const soutenanceResponse = await fetch(`http://localhost:5000/api/soutenance/${id}`);
                         if (!soutenanceResponse.ok) {
-                            throw new Error("Failed to fetch soutenance");
+                            throw new Error("Échec du chargement de la soutenance");
                         }
                         const soutenanceData = await soutenanceResponse.json();
-                        console.log("Fetched soutenance data:", soutenanceData);
-                        const formattedDate = new Date(soutenanceData.date).toISOString().split("T")[0];
+                        // Format date
+                        const formattedDate = soutenanceData.date ? new Date(soutenanceData.date).toISOString().split("T")[0] : "";
                         setSoutenance({
                             ...soutenanceData,
                             date: formattedDate
                         });
+                        // Set initial selected group ID
+                        setSelectedGroupId(soutenanceData.idGroupe);
+                        // Fetch groups
                         const groupsResponse = await fetch("http://localhost:5000/api/groups");
                         if (!groupsResponse.ok) {
-                            throw new Error("Failed to fetch groups");
+                            throw new Error("Échec du chargement des groupes");
                         }
                         const groupsData = await groupsResponse.json();
                         setGroups(groupsData);
+                        // Fetch jury list
+                        const juryResponse = await fetch("http://localhost:5000/api/jurys");
+                        if (!juryResponse.ok) {
+                            throw new Error("Échec du chargement du jury");
+                        }
+                        const juryData = await juryResponse.json();
+                        setJuryList(juryData);
+                        // Set initial selected jury IDs
+                        if (soutenanceData.juryIds) {
+                            setSelectedJuryIds(soutenanceData.juryIds);
+                        }
                     } catch (err) {
                         setError("Une erreur est survenue lors du chargement des données");
                         console.error("Error fetching data:", err);
@@ -658,8 +652,41 @@ function EditSoutenancePage({ params }) {
             fetchData();
         }
     }["EditSoutenancePage.useEffect"], [
-        params.id
+        id
     ]);
+    const handleSave = async ()=>{
+        if (!soutenance || !soutenance.idSoutenance) {
+            setError("Données de soutenance manquantes");
+            return;
+        }
+        const updateData = {
+            date: soutenance.date,
+            time: soutenance.time,
+            location: soutenance.location,
+            status: soutenance.status,
+            group: selectedGroupId,
+            juryIds: selectedJuryIds
+        };
+        try {
+            const response = await fetch(`http://localhost:5000/api/soutenance/${soutenance.idSoutenance}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updateData)
+            });
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(`Erreur serveur: ${errorData}`);
+            }
+            console.log("✅ Soutenance mise à jour avec succès!");
+            router.push("/ListeSoutenances");
+        } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue";
+            console.error("❌ Erreur de mise à jour:", errorMessage);
+            setError(errorMessage);
+        }
+    };
     if (isLoading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex items-center justify-center min-h-screen",
@@ -667,12 +694,12 @@ function EditSoutenancePage({ params }) {
                 className: "animate-spin rounded-full h-8 w-8 border-b-2 border-primary"
             }, void 0, false, {
                 fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                lineNumber: 113,
+                lineNumber: 148,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-            lineNumber: 112,
+            lineNumber: 147,
             columnNumber: 7
         }, this);
     }
@@ -686,25 +713,25 @@ function EditSoutenancePage({ params }) {
                         className: "h-4 w-4"
                     }, void 0, false, {
                         fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                        lineNumber: 122,
+                        lineNumber: 157,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDescription"], {
                         children: error || "Soutenance non trouvée"
                     }, void 0, false, {
                         fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                        lineNumber: 123,
+                        lineNumber: 158,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                lineNumber: 121,
+                lineNumber: 156,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-            lineNumber: 120,
+            lineNumber: 155,
             columnNumber: 7
         }, this);
     }
@@ -717,12 +744,12 @@ function EditSoutenancePage({ params }) {
                     children: "Modifier la Soutenance"
                 }, void 0, false, {
                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                    lineNumber: 132,
+                    lineNumber: 167,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                lineNumber: 131,
+                lineNumber: 166,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -737,7 +764,7 @@ function EditSoutenancePage({ params }) {
                                     children: "Date"
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 137,
+                                    lineNumber: 172,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -750,13 +777,13 @@ function EditSoutenancePage({ params }) {
                                             } : null)
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 138,
+                                    lineNumber: 173,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                            lineNumber: 136,
+                            lineNumber: 171,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -767,7 +794,7 @@ function EditSoutenancePage({ params }) {
                                     children: "Heure"
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 147,
+                                    lineNumber: 184,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -780,13 +807,13 @@ function EditSoutenancePage({ params }) {
                                             } : null)
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 185,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                            lineNumber: 146,
+                            lineNumber: 183,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -797,12 +824,13 @@ function EditSoutenancePage({ params }) {
                                     children: "Groupe"
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 157,
+                                    lineNumber: 196,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
-                                    value: soutenance.nomGroupe,
+                                    value: selectedGroupId,
                                     onValueChange: (groupId)=>{
+                                        setSelectedGroupId(groupId);
                                         const selectedGroup = groups.find((g)=>g.idGroupe === groupId);
                                         if (selectedGroup) {
                                             setSoutenance((prev)=>prev ? {
@@ -818,12 +846,12 @@ function EditSoutenancePage({ params }) {
                                                 placeholder: "Sélectionner un groupe"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                lineNumber: 168,
+                                                lineNumber: 210,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                            lineNumber: 167,
+                                            lineNumber: 209,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -837,24 +865,24 @@ function EditSoutenancePage({ params }) {
                                                     ]
                                                 }, group.idGroupe, true, {
                                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                    lineNumber: 172,
+                                                    lineNumber: 214,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                            lineNumber: 170,
+                                            lineNumber: 212,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 158,
+                                    lineNumber: 197,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                            lineNumber: 156,
+                            lineNumber: 195,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -865,26 +893,59 @@ function EditSoutenancePage({ params }) {
                                     children: "Jury"
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 181,
+                                    lineNumber: 223,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                    id: "jury",
-                                    type: "text",
-                                    value: soutenance.juryNames || "",
-                                    onChange: (e)=>setSoutenance((prev)=>prev ? {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                    value: selectedJuryIds.join(","),
+                                    onValueChange: (value)=>{
+                                        const ids = value.split(",").map(Number).filter((id)=>!isNaN(id));
+                                        setSelectedJuryIds(ids);
+                                        const juryNames = ids.map((id)=>juryList.find((j)=>j.idJury === id)?.nom).filter(Boolean).join(" | ");
+                                        setSoutenance((prev)=>prev ? {
                                                 ...prev,
-                                                juryNames: e.target.value
-                                            } : null)
-                                }, void 0, false, {
+                                                juryNames
+                                            } : null);
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                            id: "jury",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                placeholder: "Sélectionner le jury"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
+                                                lineNumber: 239,
+                                                columnNumber: 17
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
+                                            lineNumber: 238,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                            children: juryList.map((jury)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                    value: jury.idJury.toString(),
+                                                    children: jury.nom
+                                                }, jury.idJury, false, {
+                                                    fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
+                                                    lineNumber: 243,
+                                                    columnNumber: 19
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
+                                            lineNumber: 241,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 182,
+                                    lineNumber: 224,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                            lineNumber: 180,
+                            lineNumber: 222,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -895,7 +956,7 @@ function EditSoutenancePage({ params }) {
                                     children: "Salle"
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 191,
+                                    lineNumber: 252,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -911,12 +972,12 @@ function EditSoutenancePage({ params }) {
                                                 placeholder: "Sélectionner une salle"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                lineNumber: 197,
+                                                lineNumber: 260,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 259,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -930,24 +991,24 @@ function EditSoutenancePage({ params }) {
                                                     ]
                                                 }, i + 1, true, {
                                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                    lineNumber: 201,
+                                                    lineNumber: 264,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                            lineNumber: 199,
+                                            lineNumber: 262,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 192,
+                                    lineNumber: 253,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                            lineNumber: 190,
+                            lineNumber: 251,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -958,7 +1019,7 @@ function EditSoutenancePage({ params }) {
                                     children: "Statut"
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 273,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -974,12 +1035,12 @@ function EditSoutenancePage({ params }) {
                                                 placeholder: "Sélectionner un statut"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                lineNumber: 216,
+                                                lineNumber: 281,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 280,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -989,7 +1050,7 @@ function EditSoutenancePage({ params }) {
                                                     children: "Planifié"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                    lineNumber: 219,
+                                                    lineNumber: 284,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -997,7 +1058,7 @@ function EditSoutenancePage({ params }) {
                                                     children: "Terminé"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                    lineNumber: 220,
+                                                    lineNumber: 285,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1005,7 +1066,7 @@ function EditSoutenancePage({ params }) {
                                                     children: "En attente"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                    lineNumber: 221,
+                                                    lineNumber: 286,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1013,25 +1074,25 @@ function EditSoutenancePage({ params }) {
                                                     children: "Annulé"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                                    lineNumber: 222,
+                                                    lineNumber: 287,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 283,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 211,
+                                    lineNumber: 274,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                            lineNumber: 209,
+                            lineNumber: 272,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1039,11 +1100,11 @@ function EditSoutenancePage({ params }) {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                     variant: "outline",
-                                    onClick: ()=>router.push("/"),
+                                    onClick: ()=>router.push("/ListeSoutenances"),
                                     children: "Annuler"
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 228,
+                                    lineNumber: 293,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1051,34 +1112,34 @@ function EditSoutenancePage({ params }) {
                                     children: "Sauvegarder"
                                 }, void 0, false, {
                                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                                    lineNumber: 231,
+                                    lineNumber: 296,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                            lineNumber: 227,
+                            lineNumber: 292,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                    lineNumber: 135,
+                    lineNumber: 170,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-                lineNumber: 134,
+                lineNumber: 169,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/edit_soutenance/[id]/page.tsx",
-        lineNumber: 130,
+        lineNumber: 165,
         columnNumber: 5
     }, this);
 }
-_s(EditSoutenancePage, "PnHfO7InfeF3NPB5c5jpaQFBbB4=", false, function() {
+_s(EditSoutenancePage, "kh/68MyY7IKA47Se1T5vdDy3J94=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];

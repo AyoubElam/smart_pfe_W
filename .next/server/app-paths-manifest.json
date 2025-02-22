@@ -1,7 +1,8 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/PlanifierSoutenance/page": "app/PlanifierSoutenance/page.js",
-  "/ListeSoutenances/page": "app/ListeSoutenances/page.js"
+  "/GestionJurys/page": "app/GestionJurys/page.js",
+  "/ListeSoutenances/page": "app/ListeSoutenances/page.js",
+  "/edit_soutenance/[id]/page": "app/edit_soutenance/[id]/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

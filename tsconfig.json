@@ -35,7 +35,7 @@
     ".next/types/**/*.ts",
     "app/page.tsx",
     "app/pages/api/soutenance.js"
-, "app/pages/api/jurys.js", "app/pages/api/groups.js", "app/components/PlanifierSoutenance/JurySelector.jsx"  ],
+, "app/pages/api/jurys.js", "app/pages/api/groups.js", "app/components/PlanifierSoutenance/JurySelector.jsx", "app/components/ListeSoutenances/SoutenanceTable.jsx"  ],
   "exclude": [
     "node_modules",
     "config/db.js", // Remove db.js if it's not a TypeScript file

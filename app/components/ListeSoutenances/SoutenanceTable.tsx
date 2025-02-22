@@ -1,31 +1,19 @@
-"use client";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Edit2,
-  Users,
-  Search,
-  AlertCircle,
-  CheckCircle2,
-  Clock,
-  XCircle,
-  CalendarClock,
-  Trash2,
-} from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+"use client"
+
+import type React from "react"
+
+import { useEffect, useState } from "react"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Edit2, Users, Search, AlertCircle, CheckCircle2, Clock, XCircle, CalendarClock, Trash2 } from "lucide-react"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -36,34 +24,37 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import router from "@/app/pages/api/soutenance";
-import Link from "next/link";
+} from "@/components/ui/alert-dialog"
+import { useRouter } from "next/navigation"
 
 interface Soutenance {
-  id: number;
-  date: string;
-  time: string;
-  location: string;
-  nomGroupe: string;
-  juryNames: string[] | string | null;  // Allowing null in case no jury is assigned
-  status: string;
-}
-
-
-
-interface SoutenanceTableProps {
-  soutenances?: Soutenance[];
-  onEdit?: (id: number) => void;
-  onDelete?: (id: number) => void;
+  [x: string]: any
+  id: number
+  date: string
+  time: string
+  location: string
+  nomGroupe: string
+  juryNames: string[] | string | null
+  status: string
 }
 
 interface StatusConfig {
-  color: string;
-  bg: string;
-  hoverBg: string;
-  icon: React.ReactNode;
-  text: string;
+  color: string
+  bg: string
+  hoverBg: string
+  icon: React.ReactNode
+  text: string
+}
+
+interface Salle {
+  idSalle: string
+  nomSalle: string
+}
+
+interface Group {
+  idGroupe: string
+  nomGroupe: string
+  nbEtudiants: number
 }
 
 function getStatusConfig(status: string): StatusConfig {
@@ -74,45 +65,45 @@ function getStatusConfig(status: string): StatusConfig {
         bg: "bg-blue-100 dark:bg-blue-900/50",
         hoverBg: "hover:bg-blue-200 dark:hover:bg-blue-900/70",
         icon: <CalendarClock className="w-3.5 h-3.5" />,
-        text: "Scheduled",
-      };
+        text: "Planifié",
+      }
     case "Completed":
       return {
         color: "text-green-700 dark:text-green-300",
         bg: "bg-green-100 dark:bg-green-900/50",
         hoverBg: "hover:bg-green-200 dark:hover:bg-green-900/70",
         icon: <CheckCircle2 className="w-3.5 h-3.5" />,
-        text: "Completed",
-      };
+        text: "Terminé",
+      }
     case "Pending":
       return {
         color: "text-yellow-700 dark:text-yellow-300",
         bg: "bg-yellow-100 dark:bg-yellow-900/50",
         hoverBg: "hover:bg-yellow-200 dark:hover:bg-yellow-900/70",
         icon: <Clock className="w-3.5 h-3.5" />,
-        text: "Pending",
-      };
+        text: "En attente",
+      }
     case "Cancelled":
       return {
         color: "text-red-700 dark:text-red-300",
         bg: "bg-red-100 dark:bg-red-900/50",
         hoverBg: "hover:bg-red-200 dark:hover:bg-red-900/70",
         icon: <XCircle className="w-3.5 h-3.5" />,
-        text: "Cancelled",
-      };
+        text: "Annulé",
+      }
     default:
       return {
         color: "text-gray-700 dark:text-gray-300",
         bg: "bg-gray-100 dark:bg-gray-800",
         hoverBg: "hover:bg-gray-200 dark:hover:bg-gray-800/70",
         icon: <AlertCircle className="w-3.5 h-3.5" />,
-        text: "Unknown",
-      };
+        text: "Inconnu",
+      }
   }
 }
 
 function StatusBadge({ status }: { status: string }) {
-  const config = getStatusConfig(status);
+  const config = getStatusConfig(status)
 
   return (
     <Badge
@@ -138,18 +129,20 @@ function StatusBadge({ status }: { status: string }) {
       {config.icon}
       {config.text}
     </Badge>
-  );
+  )
 }
 
-function DeleteDialog({ onDelete, soutenanceId }: { onDelete: () => void, soutenanceId: number }) {
+function DeleteDialog({
+  onDelete,
+  soutenanceId,
+}: {
+  onDelete: () => void
+  soutenanceId: number
+}) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/30"
-        >
+        <Button variant="ghost" size="icon" className="hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/30">
           <Trash2 className="h-4 w-4" />
           <span className="sr-only">Supprimer la soutenance</span>
         </Button>
@@ -163,47 +156,91 @@ function DeleteDialog({ onDelete, soutenanceId }: { onDelete: () => void, souten
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Annuler</AlertDialogCancel>
-          <AlertDialogAction
-            onClick={onDelete}
-            className="bg-red-600 hover:bg-red-700 dark:hover:bg-red-700"
-          >
+          <AlertDialogAction onClick={onDelete} className="bg-red-600 hover:bg-red-700 dark:hover:bg-red-700">
             Supprimer
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  );
+  )
 }
 
-export default function SoutenanceTable({
-  onEdit = (id) => console.log(`Edit soutenance ${id}`),
-  onDelete = (id) => console.log(`Delete soutenance ${id}`),
-}: SoutenanceTableProps) {
-  const [soutenances, setSoutenances] = useState<Soutenance[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
+export default function SoutenancesPage() {
+  const [soutenances, setSoutenances] = useState<Soutenance[]>([])
+  const [searchTerm, setSearchTerm] = useState("")
+  const [groups, setGroups] = useState<Group[]>([])
+  const [salles, setSalles] = useState<Salle[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const rooms: Salle[] = [
+    { idSalle: "1", nomSalle: "Salle 1" },
+    { idSalle: "2", nomSalle: "Salle 2" },
+    { idSalle: "3", nomSalle: "Salle 3" },
+    { idSalle: "4", nomSalle: "Salle 4" },
+    { idSalle: "5", nomSalle: "Salle 5" },
+    { idSalle: "6", nomSalle: "Salle 6" },
+    { idSalle: "7", nomSalle: "Salle 7" },
+    { idSalle: "8", nomSalle: "Salle 8" },
+    { idSalle: "9", nomSalle: "Salle 9" },
+    { idSalle: "10", nomSalle: "Salle 10" },
+    { idSalle: "11", nomSalle: "Salle 11" },
+    { idSalle: "12", nomSalle: "Salle 12" },
+  ]
+
+  const fetchSoutenances = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/soutenance")
+      const data = await response.json()
+      setSoutenances(data)
+    } catch (error) {
+      console.error("Error fetching soutenances:", error)
+    }
+  }
 
   useEffect(() => {
-    // Fetch data from the local API
-    async function fetchSoutenances() {
-      try {
-        const response = await fetch("http://localhost:5000/api/soutenance"); // Updated endpoint
-        const data = await response.json();
-        
-        // Log the fetched data to verify it's correct
-        console.log("Fetched soutenances data:", data);
+    fetchSoutenances()
+  }, [fetchSoutenances])
 
-        setSoutenances(data);
-      } catch (error) {
-        console.error("Error fetching soutenances:", error);
+  const fetchGroupsAndSalles = async () => {
+    try {
+      setIsLoading(true)
+      const groupsResponse = await fetch("http://localhost:5000/api/groups")
+
+      if (!groupsResponse.ok) {
+        throw new Error("Failed to fetch groups")
       }
+
+      const groupsData = await groupsResponse.json()
+      setGroups(groupsData)
+      setSalles(rooms)
+    } catch (error) {
+      console.error("Error fetching data:", error)
+    } finally {
+      setIsLoading(false)
     }
+  }
 
-    fetchSoutenances();
-  }, []);
+  const router = useRouter()
 
-  const filteredSoutenances = soutenances.filter((soutenance) =>
-    soutenance.nomGroupe.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleEdit = (soutenance: Soutenance) => {
+    console.log("Soutenance to edit:", soutenance)
+    router.push(`/edit_soutenance/${soutenance.idSoutenance}`)
+  }
+  
+  
+
+  const handleDelete = async (id: number) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/soutenance/${id}`, {
+        method: "DELETE",
+      })
+
+      if (!response.ok) throw new Error("Failed to delete soutenance")
+
+      await fetchSoutenances()
+    } catch (error) {
+      console.error("Error deleting soutenance:", error)
+    }
+  }
 
   if (!soutenances || soutenances.length === 0) {
     return (
@@ -211,13 +248,11 @@ export default function SoutenanceTable({
         <CardContent className="pt-6">
           <Alert>
             <AlertCircle className="h-4 w-4" />
-            <AlertDescription>
-              Aucune soutenance disponible pour le moment
-            </AlertDescription>
+            <AlertDescription>Aucune soutenance disponible pour le moment</AlertDescription>
           </Alert>
         </CardContent>
       </Card>
-    );
+    )
   }
 
   return (
@@ -251,92 +286,93 @@ export default function SoutenanceTable({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredSoutenances.map((soutenance) => (
-                <TableRow key={soutenance.id} className="transition-colors hover:bg-muted/50">
-                  <TableCell className="font-medium text-lg">
-                    {new Date(soutenance.date).toLocaleDateString("fr-FR", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </TableCell>
-                  <TableCell className="text-lg">{soutenance.time}</TableCell>
-                  <TableCell className="text-lg">{soutenance.location}</TableCell>
-                  <TableCell>
-                    <Badge variant="secondary" className="font-medium text-lg">
-                      {soutenance.nomGroupe}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-  <TooltipProvider>
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <div className="flex items-center gap-2 cursor-pointer">
-          <Users className="h-5 w-5 text-muted-foreground" />
-          <span className="truncate max-w-[250px] text-lg">
-            {soutenance.juryNames}
-          </span>
-        </div>
-      </TooltipTrigger>
-      <TooltipContent>
-        <p className="max-w-xs text-lg">
-          {soutenance.juryNames}
-        </p>
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
-</TableCell>
-
-
-
-
-
-                  <TableCell>
-                    <StatusBadge status={soutenance.status} />
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
+              {soutenances
+                .filter((s) => s.nomGroupe.toLowerCase().includes(searchTerm.toLowerCase()))
+                .map((soutenance, index) => (
+                  <TableRow
+                    key={soutenance.id ?? `soutenance-${index}`}
+                    className="transition-colors hover:bg-muted/50"
+                  >
+                    <TableCell className="font-medium text-lg">
+                      {new Date(soutenance.date).toLocaleDateString("fr-FR", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </TableCell>
+                    <TableCell className="text-lg">{soutenance.time}</TableCell>
+                    <TableCell className="text-lg">{soutenance.location}</TableCell>
+                    <TableCell>
+                      <Badge variant="secondary" className="font-medium text-lg">
+                        {soutenance.nomGroupe}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                          <Link href={`/edit-soutenance/${soutenance.id}`} passHref>
-                      <Button 
-                        variant="ghost"
-                        size="icon"
-                        className="hover:bg-muted"
-                      >
-                        <Edit2 className="h-5 w-5" />
-                        <span className="sr-only">Modifier la soutenance</span>
-                      </Button>
-                    </Link>
+                            <div className="flex items-center gap-2 cursor-pointer">
+                              <Users className="h-5 w-5 text-muted-foreground" />
+                              <span className="truncate max-w-[250px] text-lg">
+                                {Array.isArray(soutenance.juryNames)
+                                  ? soutenance.juryNames.join(", ")
+                                  : soutenance.juryNames}
+                              </span>
+                            </div>
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p className="text-lg">Modifier la soutenance</p>
+                            <p className="max-w-xs text-lg">
+                              {Array.isArray(soutenance.juryNames)
+                                ? soutenance.juryNames.join(", ")
+                                : soutenance.juryNames}
+                            </p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
+                    </TableCell>
+                    <TableCell>
+                      <StatusBadge status={soutenance.status} />
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="hover:bg-muted"
+                                onClick={() => handleEdit(soutenance)}
+                              >
+                                <Edit2 className="h-5 w-5" />
+                                <span className="sr-only">Modifier la soutenance</span>
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="text-lg">Modifier la soutenance</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
 
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <DeleteDialog
-                              onDelete={() => onDelete(soutenance.id)}
-                              soutenanceId={soutenance.id}
-                            />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="text-lg">Supprimer la soutenance</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <DeleteDialog onDelete={() => handleDelete(soutenance.id)} soutenanceId={soutenance.id} />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="text-lg">Supprimer la soutenance</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </div>
       </CardContent>
     </Card>
-  );
+  )
 }
+

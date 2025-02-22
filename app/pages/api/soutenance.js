@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import express from "express";
 import db from "../../../config/db.js";
 
@@ -139,4 +139,70 @@ router.get("/:id", async (req, res) => {
 });
 
 
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const { date, time, location, status, group, juryIds } = req.body;
+
+  if (!date || !time || !location || !status || !group || !juryIds) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  // Update soutenance information
+  const querySoutenance = `
+    UPDATE soutenance
+    SET date = ?, time = ?, location = ?, status = ?, idGroupe = ?
+    WHERE idSoutenance = ?
+  `;
+  const valuesSoutenance = [date, time, location, status, group, id];
+
+  db.query(querySoutenance, valuesSoutenance, (err) => {
+    if (err) {
+      console.error("❌ Error updating soutenance:", err);
+      return res.status(500).json({ error: "Failed to update soutenance" });
+    }
+
+    // Update the jury members for the soutenance
+    const juryDeleteQuery = `DELETE FROM soutenance_jury WHERE idSoutenance = ?`;
+    db.query(juryDeleteQuery, [id], (err) => {
+      if (err) {
+        console.error("❌ Error deleting previous jury members:", err);
+        return res.status(500).json({ error: "Failed to delete previous jury members" });
+      }
+
+      // Insert new jury members
+      const juryInsertQuery = `
+        INSERT INTO soutenance_jury (idSoutenance, idJury) VALUES ?
+      `;
+      const juryValues = juryIds.map((idJury) => [id, idJury]);
+
+      db.query(juryInsertQuery, [juryValues], (err) => {
+        if (err) {
+          console.error("❌ Error inserting new jury members:", err);
+          return res.status(500).json({ error: "Failed to assign jury members" });
+        }
+
+        // Send updated soutenance data
+        const queryWithDetails = `
+          SELECT s.idSoutenance, s.date, s.time, s.location, s.status, 
+                 g.nomGroupe, GROUP_CONCAT(DISTINCT j.nom ORDER BY j.nom ASC SEPARATOR ' | ') AS juryNames
+          FROM soutenance s
+          JOIN groupe g ON s.idGroupe = g.idGroupe
+          JOIN soutenance_jury sj ON sj.idSoutenance = s.idSoutenance
+          JOIN jury j ON sj.idJury = j.idJury
+          WHERE s.idSoutenance = ?
+          GROUP BY s.idSoutenance
+        `;
+        db.query(queryWithDetails, [id], (err, results) => {
+          if (err) {
+            console.error("❌ Error fetching updated soutenance data:", err);
+            return res.status(500).json({ error: "Failed to fetch updated soutenance data" });
+          }
+
+          const updatedSoutenance = results[0];
+          res.json(updatedSoutenance);
+        });
+      });
+    });
+  });
+});
 export default router;

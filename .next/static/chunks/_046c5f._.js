@@ -520,7 +520,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-/* eslint-disable @typescript-eslint/no-unused-vars */ __turbopack_esm__({
+/* eslint-disable react-hooks/rules-of-hooks */ /* eslint-disable @typescript-eslint/no-explicit-any */ /* eslint-disable @typescript-eslint/no-unused-vars */ __turbopack_esm__({
     "default": (()=>JuryList)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
@@ -547,7 +547,6 @@ function JuryList() {
     _s();
     const [jurys, setJurys] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [editingJury, setEditingJury] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [deleteJuryId, setDeleteJuryId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
@@ -561,9 +560,9 @@ function JuryList() {
                         if (!response.ok) throw new Error("Failed to fetch jurys");
                         const data = await response.json();
                         setJurys(data);
-                    } catch (error) {
-                        setError("Failed to load jury list. Please try again later.");
-                        console.error("Error fetching jurors:", error);
+                    } catch (err) {
+                        setError(err instanceof Error ? err.message : "Failed to load jury list.");
+                        console.error("Error fetching jurors:", err);
                     } finally{
                         setIsLoading(false);
                     }
@@ -580,10 +579,12 @@ function JuryList() {
                 method: "DELETE"
             });
             if (!response.ok) throw new Error("Failed to delete jury");
-            setJurys(jurys.filter((jury)=>jury.idJury !== deleteJuryId));
-            setDeleteJuryId(null);
-        } catch (error) {
-            console.error("Error deleting jury:", error);
+            setJurys((prevJurys)=>prevJurys.filter((jury)=>jury.idJury !== deleteJuryId));
+        } catch (err) {
+            console.error("Error deleting jury:", err);
+            alert(err instanceof Error ? err.message : "Une erreur s'est produite.");
+        } finally{
+            setDeleteJuryId(null); // Ensure modal closes after attempting delete
         }
     };
     if (isLoading) {
@@ -593,12 +594,12 @@ function JuryList() {
                 className: "h-10 w-10 animate-spin text-gray-400"
             }, void 0, false, {
                 fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                lineNumber: 88,
+                lineNumber: 93,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-            lineNumber: 87,
+            lineNumber: 92,
             columnNumber: 7
         }, this);
     }
@@ -608,7 +609,7 @@ function JuryList() {
             children: error
         }, void 0, false, {
             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-            lineNumber: 95,
+            lineNumber: 100,
             columnNumber: 7
         }, this);
     }
@@ -622,7 +623,7 @@ function JuryList() {
                         children: "Liste des Jurys"
                     }, void 0, false, {
                         fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                        lineNumber: 104,
+                        lineNumber: 109,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -632,7 +633,7 @@ function JuryList() {
                                 className: "absolute left-3 top-3 h-6 w-6 text-gray-500"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                lineNumber: 106,
+                                lineNumber: 111,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -642,19 +643,19 @@ function JuryList() {
                                 className: "pl-12 py-3 text-lg border-2 border-gray-300 rounded-lg"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                lineNumber: 107,
+                                lineNumber: 112,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                        lineNumber: 105,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                lineNumber: 103,
+                lineNumber: 108,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -669,7 +670,7 @@ function JuryList() {
                                         children: "Nom"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                        lineNumber: 119,
+                                        lineNumber: 124,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -677,18 +678,18 @@ function JuryList() {
                                         children: "Actions"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                        lineNumber: 120,
+                                        lineNumber: 125,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                lineNumber: 118,
+                                lineNumber: 123,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                            lineNumber: 117,
+                            lineNumber: 122,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
@@ -699,7 +700,7 @@ function JuryList() {
                                             children: jury.nom
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                            lineNumber: 126,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -710,17 +711,17 @@ function JuryList() {
                                                         variant: "ghost",
                                                         size: "lg",
                                                         className: "p-3",
-                                                        onClick: ()=>setEditingJury(jury.idJury),
+                                                        onClick: ()=>alert("Edit functionality not implemented"),
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$pen$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit$3e$__["Edit"], {
                                                             className: "h-6 w-6"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                                            lineNumber: 135,
+                                                            lineNumber: 140,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                                        lineNumber: 129,
+                                                        lineNumber: 134,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -732,45 +733,45 @@ function JuryList() {
                                                             className: "h-6 w-6 text-red-500"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                                            lineNumber: 143,
+                                                            lineNumber: 148,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                                        lineNumber: 137,
+                                                        lineNumber: 142,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 133,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 132,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, jury.idJury, true, {
                                     fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 130,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                            lineNumber: 123,
+                            lineNumber: 128,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                    lineNumber: 116,
+                    lineNumber: 121,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                lineNumber: 115,
+                lineNumber: 120,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialog"], {
@@ -785,37 +786,12 @@ function JuryList() {
                                     children: "Confirmer la suppression"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                    lineNumber: 156,
+                                    lineNumber: 162,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogDescription"], {
                                     className: "text-lg",
                                     children: "Êtes-vous sûr de vouloir supprimer ce jury ? Cette action est irréversible."
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                    lineNumber: 157,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                            lineNumber: 155,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogFooter"], {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogCancel"], {
-                                    className: "text-lg px-6 py-3",
-                                    children: "Annuler"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                                    lineNumber: 162,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogAction"], {
-                                    className: "text-lg px-6 py-3 bg-red-500 hover:bg-red-600",
-                                    onClick: handleDelete,
-                                    children: "Supprimer"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
                                     lineNumber: 163,
@@ -826,26 +802,51 @@ function JuryList() {
                             fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
                             lineNumber: 161,
                             columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogFooter"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogCancel"], {
+                                    className: "text-lg px-6 py-3",
+                                    children: "Annuler"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
+                                    lineNumber: 168,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogAction"], {
+                                    className: "text-lg px-6 py-3 bg-red-500 hover:bg-red-600",
+                                    onClick: handleDelete,
+                                    children: "Supprimer"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
+                                    lineNumber: 169,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
+                            lineNumber: 167,
+                            columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                    lineNumber: 154,
+                    lineNumber: 160,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-                lineNumber: 153,
+                lineNumber: 159,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/GestionJurys/JuryList.tsx",
-        lineNumber: 102,
+        lineNumber: 107,
         columnNumber: 5
     }, this);
 }
-_s(JuryList, "Dpe5NuGw7VQVC2WALn6TZeKwWCQ=");
+_s(JuryList, "PwUsRo240xwQoDFa/YVfY+YLoCI=");
 _c = JuryList;
 var _c;
 __turbopack_refresh__.register(_c, "JuryList");
@@ -865,53 +866,44 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_refresh__.signature();
-"use client";
 ;
 function AddJuryForm({ onAdd }) {
     _s();
     const [name, setName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
-        if (name.trim()) {
-            onAdd(name);
-            setName("");
-        }
+        if (name.trim() === "") return;
+        await onAdd(name); // Call the function passed as a prop
+        setName(""); // Reset input after adding
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
         onSubmit: handleSubmit,
-        className: "mb-8",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "flex gap-4",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                    type: "text",
-                    placeholder: "Ajouter un nouveau jury",
-                    value: name,
-                    onChange: (e)=>setName(e.target.value),
-                    className: "p-2 border rounded w-full"
-                }, void 0, false, {
-                    fileName: "[project]/app/components/GestionJurys/AddJuryForm.tsx",
-                    lineNumber: 23,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                    type: "submit",
-                    className: "bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600",
-                    children: "Ajouter"
-                }, void 0, false, {
-                    fileName: "[project]/app/components/GestionJurys/AddJuryForm.tsx",
-                    lineNumber: 30,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/app/components/GestionJurys/AddJuryForm.tsx",
-            lineNumber: 22,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+        className: "mb-6",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                type: "text",
+                value: name,
+                onChange: (e)=>setName(e.target.value),
+                placeholder: "Nom du jury",
+                className: "border rounded p-2"
+            }, void 0, false, {
+                fileName: "[project]/app/components/GestionJurys/AddJuryForm.tsx",
+                lineNumber: 19,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                type: "submit",
+                className: "ml-2 px-4 py-2 bg-blue-500 text-white rounded",
+                children: "Ajouter"
+            }, void 0, false, {
+                fileName: "[project]/app/components/GestionJurys/AddJuryForm.tsx",
+                lineNumber: 26,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/app/components/GestionJurys/AddJuryForm.tsx",
-        lineNumber: 21,
+        lineNumber: 18,
         columnNumber: 5
     }, this);
 }
@@ -928,17 +920,44 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-/* eslint-disable @typescript-eslint/no-unused-vars */ __turbopack_esm__({
+__turbopack_esm__({
     "default": (()=>GestionJurys)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$GestionJurys$2f$JuryList$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/GestionJurys/JuryList.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$GestionJurys$2f$AddJuryForm$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/GestionJurys/AddJuryForm.tsx [app-client] (ecmascript)");
+;
+var _s = __turbopack_refresh__.signature();
 "use client";
 ;
 ;
 ;
 function GestionJurys() {
+    _s();
+    const [jurys, setJurys] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]); // Explicitly defining the state as an array of Jury
+    const addJury = async (name)=>{
+        try {
+            const response = await fetch("http://localhost:5000/api/jurys", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nom: name
+                })
+            });
+            if (!response.ok) throw new Error("Erreur lors de l'ajout du jury.");
+            const newJury = await response.json();
+            console.log(newJury); // Log the response to see what data is returned
+            setJurys((prev)=>[
+                    ...prev,
+                    newJury
+                ]);
+        } catch (error) {
+            console.error("Error adding jury:", error);
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-6",
         children: [
@@ -947,30 +966,31 @@ function GestionJurys() {
                 children: "👨‍⚖️ Gestion des Jurys"
             }, void 0, false, {
                 fileName: "[project]/app/GestionJurys/page.tsx",
-                lineNumber: 10,
+                lineNumber: 44,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$GestionJurys$2f$AddJuryForm$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                onAdd: function(name) {
-                    throw new Error("Function not implemented.");
-                }
+                onAdd: addJury
             }, void 0, false, {
                 fileName: "[project]/app/GestionJurys/page.tsx",
-                lineNumber: 11,
+                lineNumber: 45,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$GestionJurys$2f$JuryList$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$GestionJurys$2f$JuryList$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                jurys: jurys
+            }, void 0, false, {
                 fileName: "[project]/app/GestionJurys/page.tsx",
-                lineNumber: 14,
+                lineNumber: 46,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/GestionJurys/page.tsx",
-        lineNumber: 9,
+        lineNumber: 43,
         columnNumber: 5
     }, this);
 }
+_s(GestionJurys, "cBLdImvPIp2J8Dn3s3fdBJCkuQQ=");
 _c = GestionJurys;
 var _c;
 __turbopack_refresh__.register(_c, "GestionJurys");

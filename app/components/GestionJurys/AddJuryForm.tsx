@@ -1,39 +1,60 @@
-"use client";
-
-import { useState } from "react";
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 interface AddJuryFormProps {
-  onAdd: (name: string) => void;
+  onAdd: (name: string) => Promise<void>
 }
 
 export default function AddJuryForm({ onAdd }: AddJuryFormProps) {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (name.trim()) {
-      onAdd(name);
-      setName("");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (name.trim() === "") return
+
+    try {
+      setIsSubmitting(true)
+      await onAdd(name)
+      setName("")
+    } catch (error) {
+      console.error("Error adding jury:", error)
+    } finally {
+      setIsSubmitting(false)
     }
-  };
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8">
-      <div className="flex gap-4">
-        <input
-          type="text"
-          placeholder="Ajouter un nouveau jury"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="p-2 border rounded w-full"
-        />
-        <button
-          type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        >
-          Ajouter
-        </button>
-      </div>
-    </form>
-  );
+    <Card>
+      <CardHeader>
+        <CardTitle>Ajouter un nouveau jury</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="flex space-x-4">
+          <Input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nom du jury"
+            disabled={isSubmitting}
+            className="flex-1"
+          />
+          <Button 
+            type="submit" 
+            disabled={isSubmitting || !name.trim()}
+            className="min-w-[100px]"
+          >
+            {isSubmitting ? "Ajout..." : "Ajouter"}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
 }

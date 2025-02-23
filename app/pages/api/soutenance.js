@@ -1,6 +1,6 @@
 import express from "express";
 import db from "../../../config/db.js";
-app.use('/api/soutenance', soutenanceRouter);
+{/*app.use('/api/soutenance', soutenanceRouter);*/}
 const router = express.Router();
 
 // Fetch all soutenances

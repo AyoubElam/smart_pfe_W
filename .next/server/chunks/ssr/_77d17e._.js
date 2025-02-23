@@ -489,7 +489,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/button.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/input.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/alert.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$PlanifierSoutenance$2f$SubmitButton$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/PlanifierSoutenance/SubmitButton.tsx [app-ssr] (ecmascript)"); // Import your SubmitButton component
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$PlanifierSoutenance$2f$SubmitButton$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/PlanifierSoutenance/SubmitButton.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/x.js [app-ssr] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-ssr] (ecmascript) <export default as Users>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/calendar.js [app-ssr] (ecmascript) <export default as Calendar>");
@@ -510,9 +510,47 @@ const INITIAL_FORM_STATE = {
     date: "",
     time: "",
     location: "",
-    jury: "",
+    jury: [],
     group: ""
 };
+const rooms = [
+    {
+        id: "Salle 1",
+        name: "Salle 1"
+    },
+    {
+        id: "Salle 2",
+        name: "Salle 2"
+    },
+    {
+        id: "Salle 3",
+        name: "Salle 3"
+    },
+    {
+        id: "Salle 4",
+        name: "Salle 4"
+    },
+    {
+        id: "Salle 5",
+        name: "Salle 5"
+    },
+    {
+        id: "Salle 6",
+        name: "Salle 6"
+    },
+    {
+        id: "Salle 7",
+        name: "Salle 7"
+    },
+    {
+        id: "Salle 8",
+        name: "Salle 8"
+    },
+    {
+        id: "Salle 9",
+        name: "Salle 9"
+    }
+];
 function PlanifierSoutenance() {
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(INITIAL_FORM_STATE);
     const [groups, setGroups] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
@@ -520,44 +558,6 @@ function PlanifierSoutenance() {
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [toast, setToast] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const rooms = [
-        {
-            id: "Salle 1",
-            name: "Salle 1"
-        },
-        {
-            id: "Salle 2",
-            name: "Salle 2"
-        },
-        {
-            id: "Salle 3",
-            name: "Salle 3"
-        },
-        {
-            id: "Salle 4",
-            name: "Salle 4"
-        },
-        {
-            id: "Salle 5",
-            name: "Salle 5"
-        },
-        {
-            id: "Salle 6",
-            name: "Salle 6"
-        },
-        {
-            id: "Salle 7",
-            name: "Salle 7"
-        },
-        {
-            id: "Salle 8",
-            name: "Salle 8"
-        },
-        {
-            id: "Salle 9",
-            name: "Salle 9"
-        }
-    ];
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const fetchData = async ()=>{
             try {
@@ -584,7 +584,6 @@ function PlanifierSoutenance() {
         };
         fetchData();
     }, []);
-    // Auto-hide toast after 3 seconds
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if (toast) {
             const timer = setTimeout(()=>{
@@ -595,16 +594,7 @@ function PlanifierSoutenance() {
     }, [
         toast
     ]);
-    const showToast = (message, type)=>{
-        setToast({
-            message,
-            type
-        });
-    };
     const onAddSoutenance = async ()=>{
-        console.log(formData); // Inspect formData before sending
-        // Ensure juryIds is an array of numbers
-        const juryIds = formData.jury.map((juryId)=>parseInt(juryId, 10));
         try {
             const response = await fetch("http://localhost:5000/api/soutenance", {
                 method: "POST",
@@ -615,31 +605,26 @@ function PlanifierSoutenance() {
                     date: new Date(formData.date).toISOString(),
                     time: formData.time,
                     location: formData.location,
-                    juryIds: juryIds,
+                    juryIds: formData.jury.map((id)=>parseInt(id, 10)),
                     group: parseInt(formData.group, 10),
                     status: "Pending"
                 })
             });
             if (!response.ok) {
-                const error = await response.json();
-                console.error("Error:", error);
-                setToast({
-                    type: "error",
-                    message: error.message || "An error occurred."
-                });
-            } else {
-                const data = await response.json();
-                console.log("Soutenance Added:", data);
-                setToast({
-                    type: "success",
-                    message: "Soutenance added successfully!"
-                });
+                const errorData = await response.json();
+                throw new Error(errorData.message || "An error occurred");
             }
+            const data = await response.json();
+            setToast({
+                type: "success",
+                message: "Soutenance added successfully!"
+            });
+            // Reset form after successful submission
+            setFormData(INITIAL_FORM_STATE);
         } catch (error) {
-            console.error("Request failed:", error);
             setToast({
                 type: "error",
-                message: "Failed to add soutenance. Please try again later."
+                message: error instanceof Error ? error.message : "Failed to add soutenance"
             });
         }
     };
@@ -650,12 +635,12 @@ function PlanifierSoutenance() {
                 className: "h-12 w-12 animate-spin"
             }, void 0, false, {
                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                lineNumber: 175,
+                lineNumber: 158,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-            lineNumber: 174,
+            lineNumber: 157,
             columnNumber: 7
         }, this);
     }
@@ -668,17 +653,17 @@ function PlanifierSoutenance() {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                    lineNumber: 184,
+                    lineNumber: 167,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                lineNumber: 183,
+                lineNumber: 166,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-            lineNumber: 182,
+            lineNumber: 165,
             columnNumber: 7
         }, this);
     }
@@ -686,48 +671,46 @@ function PlanifierSoutenance() {
         className: "p-12 bg-gray-50 min-h-screen relative",
         children: [
             toast && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed top-4 right-4 z-50 animate-fade-in",
+                className: "fixed top-4 right-4 z-50 animate-in fade-in duration-300",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Alert"], {
                     variant: toast.type === "error" ? "destructive" : "default",
-                    className: `flex items-center justify-between p-4 text-lg rounded-lg ${toast.type === "success" ? "bg-green-500 text-white" // Green background for success
-                     : "bg-red-500 text-white" // Red background for errors
-                    }`,
+                    className: `flex items-center justify-between p-4 text-lg rounded-lg ${toast.type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"}`,
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AlertDescription"], {
                             className: "font-semibold",
                             children: toast.message
                         }, void 0, false, {
                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                            lineNumber: 203,
-                            columnNumber: 7
+                            lineNumber: 185,
+                            columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                             variant: "ghost",
                             size: "icon",
-                            className: "h-6 w-6",
+                            className: "h-6 w-6 hover:bg-transparent",
                             onClick: ()=>setToast(null),
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
                                 className: "h-6 w-6"
                             }, void 0, false, {
                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                lineNumber: 210,
-                                columnNumber: 9
+                                lineNumber: 192,
+                                columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                            lineNumber: 204,
-                            columnNumber: 7
+                            lineNumber: 186,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                    lineNumber: 195,
-                    columnNumber: 5
+                    lineNumber: 177,
+                    columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                lineNumber: 194,
-                columnNumber: 3
+                lineNumber: 176,
+                columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "max-w-7xl mx-auto",
@@ -737,36 +720,36 @@ function PlanifierSoutenance() {
                         children: "Planification des Soutenances"
                     }, void 0, false, {
                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                        lineNumber: 217,
+                        lineNumber: 199,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-1 lg:grid-cols-2 gap-8 text-center",
+                        className: "grid grid-cols-1 lg:grid-cols-2 gap-8",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                                 className: "p-6",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                            className: "flex items-center gap-3 text-xl text-center justify-center",
+                                            className: "flex items-center gap-3 text-xl justify-center",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
                                                     className: "h-6 w-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                    lineNumber: 226,
+                                                    lineNumber: 207,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Groupes"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                            lineNumber: 225,
+                                            lineNumber: 206,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                        lineNumber: 224,
+                                        lineNumber: 205,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -776,20 +759,18 @@ function PlanifierSoutenance() {
                                                     ...formData,
                                                     group: value
                                                 }),
-                                            className: "text-lg",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
-                                                        className: "text-center",
                                                         placeholder: "Sélectionner un groupe"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                        lineNumber: 239,
+                                                        lineNumber: 219,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                    lineNumber: 238,
+                                                    lineNumber: 218,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -803,29 +784,29 @@ function PlanifierSoutenance() {
                                                             ]
                                                         }, group.idGroupe, true, {
                                                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                            lineNumber: 246,
+                                                            lineNumber: 223,
                                                             columnNumber: 21
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                    lineNumber: 244,
+                                                    lineNumber: 221,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                            lineNumber: 231,
+                                            lineNumber: 212,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 211,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                lineNumber: 223,
+                                lineNumber: 204,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -833,25 +814,25 @@ function PlanifierSoutenance() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                            className: "flex items-center gap-3 text-xl flex justify-center",
+                                            className: "flex items-center gap-3 text-xl justify-center",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
                                                     className: "h-6 w-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                    lineNumber: 259,
+                                                    lineNumber: 235,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Date et Heure"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                            lineNumber: 258,
+                                            lineNumber: 234,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                        lineNumber: 257,
+                                        lineNumber: 233,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -867,7 +848,7 @@ function PlanifierSoutenance() {
                                                 className: "text-lg p-3"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                lineNumber: 264,
+                                                lineNumber: 240,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -880,19 +861,19 @@ function PlanifierSoutenance() {
                                                 className: "text-lg p-3"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                lineNumber: 272,
+                                                lineNumber: 248,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                        lineNumber: 263,
+                                        lineNumber: 239,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                lineNumber: 256,
+                                lineNumber: 232,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -900,25 +881,25 @@ function PlanifierSoutenance() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                            className: "flex items-center gap-3 text-xl flex justify-center",
+                                            className: "flex items-center gap-3 text-xl justify-center",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$house$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Home$3e$__["Home"], {
                                                     className: "h-6 w-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                    lineNumber: 287,
+                                                    lineNumber: 262,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Salle"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 261,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 260,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -928,19 +909,18 @@ function PlanifierSoutenance() {
                                                     ...formData,
                                                     location: value
                                                 }),
-                                            className: "text-lg",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
                                                         placeholder: "Sélectionner une salle"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                        lineNumber: 300,
+                                                        lineNumber: 274,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                    lineNumber: 299,
+                                                    lineNumber: 273,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -949,29 +929,29 @@ function PlanifierSoutenance() {
                                                             children: room.name
                                                         }, room.id, false, {
                                                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                            lineNumber: 304,
+                                                            lineNumber: 278,
                                                             columnNumber: 21
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                    lineNumber: 302,
+                                                    lineNumber: 276,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                            lineNumber: 292,
+                                            lineNumber: 267,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                        lineNumber: 291,
+                                        lineNumber: 266,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                lineNumber: 284,
+                                lineNumber: 259,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -985,20 +965,20 @@ function PlanifierSoutenance() {
                                                     className: "h-6 w-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                    lineNumber: 316,
-                                                    columnNumber: 7
+                                                    lineNumber: 290,
+                                                    columnNumber: 17
                                                 }, this),
                                                 "Jury"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                            lineNumber: 315,
-                                            columnNumber: 5
+                                            lineNumber: 289,
+                                            columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                        lineNumber: 314,
-                                        columnNumber: 3
+                                        lineNumber: 288,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
                                         children: [
@@ -1014,32 +994,29 @@ function PlanifierSoutenance() {
                                                                 checked: formData.jury.includes(jury.idJury.toString()),
                                                                 onChange: (e)=>{
                                                                     const isChecked = e.target.checked;
-                                                                    let newSelectedJuries;
-                                                                    if (isChecked) {
-                                                                        // Add selected jury to array if it's not already selected
-                                                                        newSelectedJuries = [
-                                                                            ...formData.jury,
-                                                                            jury.idJury.toString()
-                                                                        ];
-                                                                    } else {
-                                                                        // Remove the unselected jury from array
-                                                                        newSelectedJuries = formData.jury.filter((id)=>id !== jury.idJury.toString());
-                                                                    }
-                                                                    // Only allow up to 2 juries to be selected
-                                                                    if (newSelectedJuries.length <= 2) {
+                                                                    const juryId = jury.idJury.toString();
+                                                                    if (isChecked && formData.jury.length < 2) {
                                                                         setFormData({
                                                                             ...formData,
-                                                                            jury: newSelectedJuries
+                                                                            jury: [
+                                                                                ...formData.jury,
+                                                                                juryId
+                                                                            ]
+                                                                        });
+                                                                    } else if (!isChecked) {
+                                                                        setFormData({
+                                                                            ...formData,
+                                                                            jury: formData.jury.filter((id)=>id !== juryId)
                                                                         });
                                                                     } else {
-                                                                        alert("You can only select up to 2 juries.");
+                                                                        alert("Vous ne pouvez sélectionner que 2 jurys maximum.");
                                                                     }
                                                                 },
                                                                 className: "mr-2"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                                lineNumber: 324,
-                                                                columnNumber: 11
+                                                                lineNumber: 298,
+                                                                columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                                 htmlFor: `jury-${jury.idJury}`,
@@ -1047,73 +1024,80 @@ function PlanifierSoutenance() {
                                                                 children: jury.nom
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                                lineNumber: 352,
-                                                                columnNumber: 11
+                                                                lineNumber: 323,
+                                                                columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, jury.idJury, true, {
                                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                        lineNumber: 323,
-                                                        columnNumber: 9
+                                                        lineNumber: 297,
+                                                        columnNumber: 19
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                lineNumber: 321,
-                                                columnNumber: 5
+                                                lineNumber: 295,
+                                                columnNumber: 15
                                             }, this),
                                             formData.jury.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "mt-4",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                                        children: "Selected Juries:"
+                                                        children: "Jurys sélectionnés:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                        lineNumber: 362,
-                                                        columnNumber: 9
+                                                        lineNumber: 332,
+                                                        columnNumber: 19
                                                     }, this),
                                                     " ",
                                                     formData.jury.map((id)=>jurys.find((jury)=>jury.idJury.toString() === id)?.nom).join(", ")
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                                lineNumber: 361,
-                                                columnNumber: 7
+                                                lineNumber: 331,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                        lineNumber: 320,
-                                        columnNumber: 3
+                                        lineNumber: 294,
+                                        columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                                lineNumber: 313,
+                                lineNumber: 287,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                        lineNumber: 221,
+                        lineNumber: 203,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$PlanifierSoutenance$2f$SubmitButton$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        onAddSoutenance: onAddSoutenance
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-8",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$PlanifierSoutenance$2f$SubmitButton$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            onAddSoutenance: onAddSoutenance
+                        }, void 0, false, {
+                            fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
+                            lineNumber: 343,
+                            columnNumber: 11
+                        }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                        lineNumber: 374,
+                        lineNumber: 342,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-                lineNumber: 216,
+                lineNumber: 198,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/pages/PlanifierSoutenance.tsx",
-        lineNumber: 191,
+        lineNumber: 174,
         columnNumber: 5
     }, this);
 }

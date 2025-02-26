@@ -1,19 +1,40 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useEffect, useState } from "react"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Edit2, Users, Search, AlertCircle, CheckCircle2, Clock, XCircle, CalendarClock, Trash2 } from "lucide-react"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { useEffect, useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Edit2,
+  Users,
+  Search,
+  AlertCircle,
+  CheckCircle2,
+  Clock,
+  XCircle,
+  CalendarClock,
+  Trash2,
+} from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,37 +45,37 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { useRouter } from "next/navigation"
-import soutenance from "@/app/pages/api/soutenance"
+} from "@/components/ui/alert-dialog";
+import { useRouter } from "next/navigation";
+import soutenance from "@/app/pages/api/soutenance";
 
 interface Soutenance {
-  idSoutenance: number
-  date: string
-  time: string
-  location: string
-  nomGroupe: string
-  juryNames: string[] | string | null
-  status: string
+  idSoutenance: number;
+  date: string;
+  time: string;
+  location: string;
+  nomGroupe: string;
+  juryNames: string[] | string | null;
+  status: string;
 }
 
 interface StatusConfig {
-  color: string
-  bg: string
-  hoverBg: string
-  icon: React.ReactNode
-  text: string
+  color: string;
+  bg: string;
+  hoverBg: string;
+  icon: React.ReactNode;
+  text: string;
 }
 
 interface Salle {
-  idSalle: string
-  nomSalle: string
+  idSalle: string;
+  nomSalle: string;
 }
 
 interface Group {
-  idGroupe: string
-  nomGroupe: string
-  nbEtudiants: number
+  idGroupe: string;
+  nomGroupe: string;
+  nbEtudiants: number;
 }
 
 function getStatusConfig(status: string): StatusConfig {
@@ -66,7 +87,7 @@ function getStatusConfig(status: string): StatusConfig {
         hoverBg: "hover:bg-blue-200 dark:hover:bg-blue-900/70",
         icon: <CalendarClock className="w-3.5 h-3.5" />,
         text: "Planifié",
-      }
+      };
     case "Completed":
       return {
         color: "text-green-700 dark:text-green-300",
@@ -74,7 +95,7 @@ function getStatusConfig(status: string): StatusConfig {
         hoverBg: "hover:bg-green-200 dark:hover:bg-green-900/70",
         icon: <CheckCircle2 className="w-3.5 h-3.5" />,
         text: "Terminé",
-      }
+      };
     case "Pending":
       return {
         color: "text-yellow-700 dark:text-yellow-300",
@@ -82,7 +103,7 @@ function getStatusConfig(status: string): StatusConfig {
         hoverBg: "hover:bg-yellow-200 dark:hover:bg-yellow-900/70",
         icon: <Clock className="w-3.5 h-3.5" />,
         text: "En attente",
-      }
+      };
     case "Cancelled":
       return {
         color: "text-red-700 dark:text-red-300",
@@ -90,7 +111,7 @@ function getStatusConfig(status: string): StatusConfig {
         hoverBg: "hover:bg-red-200 dark:hover:bg-red-900/70",
         icon: <XCircle className="w-3.5 h-3.5" />,
         text: "Annulé",
-      }
+      };
     default:
       return {
         color: "text-gray-700 dark:text-gray-300",
@@ -98,12 +119,12 @@ function getStatusConfig(status: string): StatusConfig {
         hoverBg: "hover:bg-gray-200 dark:hover:bg-gray-800/70",
         icon: <AlertCircle className="w-3.5 h-3.5" />,
         text: "Inconnu",
-      }
+      };
   }
 }
 
 function StatusBadge({ status }: { status: string }) {
-  const config = getStatusConfig(status)
+  const config = getStatusConfig(status);
 
   return (
     <Badge
@@ -129,20 +150,24 @@ function StatusBadge({ status }: { status: string }) {
       {config.icon}
       {config.text}
     </Badge>
-  )
+  );
 }
 
 function DeleteDialog({
   onDelete,
   Idsoutenance,
 }: {
-  onDelete: () => void
-  Idsoutenance: number
+  onDelete: () => void;
+  Idsoutenance: number;
 }) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/30">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/30"
+        >
           <Trash2 className="h-4 w-4" />
           <span className="sr-only">Supprimer la soutenance</span>
         </Button>
@@ -151,26 +176,30 @@ function DeleteDialog({
         <AlertDialogHeader>
           <AlertDialogTitle>Confirmer la suppression</AlertDialogTitle>
           <AlertDialogDescription>
-            Êtes-vous sûr de vouloir supprimer cette soutenance ? Cette action est irréversible.
+            Êtes-vous sûr de vouloir supprimer cette soutenance ? Cette action
+            est irréversible.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Annuler</AlertDialogCancel>
-          <AlertDialogAction onClick={onDelete} className="bg-red-600 hover:bg-red-700 dark:hover:bg-red-700">
+          <AlertDialogAction
+            onClick={onDelete}
+            className="bg-red-600 hover:bg-red-700 dark:hover:bg-red-700"
+          >
             Supprimer
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }
 
 export default function SoutenancesPage() {
-  const [soutenances, setSoutenances] = useState<Soutenance[]>([])
-  const [searchTerm, setSearchTerm] = useState("")
-  const [groups, setGroups] = useState<Group[]>([])
-  const [salles, setSalles] = useState<Salle[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [soutenances, setSoutenances] = useState<Soutenance[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [groups, setGroups] = useState<Group[]>([]);
+  const [salles, setSalles] = useState<Salle[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const rooms: Salle[] = [
     { idSalle: "1", nomSalle: "Salle 1" },
     { idSalle: "2", nomSalle: "Salle 2" },
@@ -184,49 +213,47 @@ export default function SoutenancesPage() {
     { idSalle: "10", nomSalle: "Salle 10" },
     { idSalle: "11", nomSalle: "Salle 11" },
     { idSalle: "12", nomSalle: "Salle 12" },
-  ]
+  ];
 
   const fetchSoutenances = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/soutenance")
-      const data = await response.json()
-      setSoutenances(data)
+      const response = await fetch("http://localhost:5000/api/soutenance");
+      const data = await response.json();
+      setSoutenances(data);
     } catch (error) {
-      console.error("Error fetching soutenances:", error)
+      console.error("Error fetching soutenances:", error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchSoutenances()
-  }, [fetchSoutenances])
+    fetchSoutenances();
+  }, [fetchSoutenances]);
 
   const fetchGroupsAndSalles = async () => {
     try {
-      setIsLoading(true)
-      const groupsResponse = await fetch("http://localhost:5000/api/groups")
+      setIsLoading(true);
+      const groupsResponse = await fetch("http://localhost:5000/api/groups");
 
       if (!groupsResponse.ok) {
-        throw new Error("Failed to fetch groups")
+        throw new Error("Failed to fetch groups");
       }
 
-      const groupsData = await groupsResponse.json()
-      setGroups(groupsData)
-      setSalles(rooms)
+      const groupsData = await groupsResponse.json();
+      setGroups(groupsData);
+      setSalles(rooms);
     } catch (error) {
-      console.error("Error fetching data:", error)
+      console.error("Error fetching data:", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleEdit = (soutenance: Soutenance) => {
-    console.log("Soutenance to edit:", soutenance)
-    router.push(`/edit_soutenance/${soutenance.idSoutenance}`)
-  }
-  
-  
+    console.log("Soutenance to edit:", soutenance);
+    router.push(`/edit_soutenance/${soutenance.idSoutenance}`);
+  };
 
   const [error, setError] = useState<string | null>(null);
 
@@ -235,30 +262,32 @@ export default function SoutenancesPage() {
       setError("Données de soutenance manquantes");
       return;
     }
-  
 
-  
     try {
-      const response = await fetch(`http://localhost:5000/api/soutenance/${id}`, {
-        method: 'DELETE',
-      });
-      
-  
+      const response = await fetch(
+        `http://localhost:5000/api/soutenance/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
       if (!response.ok) {
         const errorData = await response.text();
         throw new Error(`Erreur serveur: ${errorData}`);
       }
-  // Rafraîchir la liste
-await fetchSoutenances()
+      // Rafraîchir la liste
+      await fetchSoutenances();
       console.log("✅ Soutenance supprimée avec succès!");
       router.push("/ListeSoutenances"); // Redirect to list page after successful deletion
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue";
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Une erreur inconnue est survenue";
       console.error("❌ Erreur de suppression:", errorMessage);
       setError(errorMessage); // Show error message
     }
   };
-  
 
   if (!soutenances || soutenances.length === 0) {
     return (
@@ -266,11 +295,13 @@ await fetchSoutenances()
         <CardContent className="pt-6">
           <Alert>
             <AlertCircle className="h-4 w-4" />
-            <AlertDescription>Aucune soutenance disponible pour le moment</AlertDescription>
+            <AlertDescription>
+              Aucune soutenance disponible pour le moment
+            </AlertDescription>
           </Alert>
         </CardContent>
       </Card>
-    )
+    );
   }
 
   return (
@@ -294,18 +325,34 @@ await fetchSoutenances()
           <Table>
             <TableHeader className="bg-muted/50">
               <TableRow>
-                <TableHead className="w-[250px] font-semibold text-lg">Date</TableHead>
-                <TableHead className="w-[150px] font-semibold text-lg">Heure</TableHead>
-                <TableHead className="w-[200px] font-semibold text-lg">Lieu</TableHead>
-                <TableHead className="w-[150px] font-semibold text-lg">Groupe</TableHead>
-                <TableHead className="w-[300px] font-semibold text-lg">Jury</TableHead>
-                <TableHead className="w-[150px] font-semibold text-lg">Statut</TableHead>
-                <TableHead className="w-[150px] font-semibold text-lg">Actions</TableHead>
+                <TableHead className="w-[250px] font-semibold text-lg">
+                  Date
+                </TableHead>
+                <TableHead className="w-[150px] font-semibold text-lg">
+                  Heure
+                </TableHead>
+                <TableHead className="w-[200px] font-semibold text-lg">
+                  Lieu
+                </TableHead>
+                <TableHead className="w-[150px] font-semibold text-lg">
+                  Groupe
+                </TableHead>
+                <TableHead className="w-[300px] font-semibold text-lg">
+                  Jury
+                </TableHead>
+                <TableHead className="w-[150px] font-semibold text-lg">
+                  Statut
+                </TableHead>
+                <TableHead className="w-[150px] font-semibold text-lg">
+                  Actions
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {soutenances
-                .filter((s) => s.nomGroupe.toLowerCase().includes(searchTerm.toLowerCase()))
+                .filter((s) =>
+                  s.nomGroupe.toLowerCase().includes(searchTerm.toLowerCase())
+                )
                 .map((soutenance, index) => (
                   <TableRow
                     key={soutenance.idSoutenance ?? `soutenance-${index}`}
@@ -319,9 +366,14 @@ await fetchSoutenances()
                       })}
                     </TableCell>
                     <TableCell className="text-lg">{soutenance.time}</TableCell>
-                    <TableCell className="text-lg">{soutenance.location}</TableCell>
+                    <TableCell className="text-lg">
+                      {soutenance.location}
+                    </TableCell>
                     <TableCell>
-                      <Badge variant="secondary" className="font-medium text-lg">
+                      <Badge
+                        variant="secondary"
+                        className="font-medium text-lg"
+                      >
                         {soutenance.nomGroupe}
                       </Badge>
                     </TableCell>
@@ -363,7 +415,9 @@ await fetchSoutenances()
                                 onClick={() => handleEdit(soutenance)}
                               >
                                 <Edit2 className="h-5 w-5" />
-                                <span className="sr-only">Modifier la soutenance</span>
+                                <span className="sr-only">
+                                  Modifier la soutenance
+                                </span>
                               </Button>
                             </TooltipTrigger>
                             <TooltipContent>
@@ -375,7 +429,12 @@ await fetchSoutenances()
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <DeleteDialog onDelete={() => handleDelete(soutenance.idSoutenance)} Idsoutenance={soutenance.idSoutenance} />
+                              <DeleteDialog
+                                onDelete={() =>
+                                  handleDelete(soutenance.idSoutenance)
+                                }
+                                Idsoutenance={soutenance.idSoutenance}
+                              />
                             </TooltipTrigger>
                             <TooltipContent>
                               <p className="text-lg">Supprimer la soutenance</p>
@@ -391,10 +450,9 @@ await fetchSoutenances()
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 function setError(arg0: string) {
-  throw new Error("Function not implemented.")
+  throw new Error("Function not implemented.");
 }
-

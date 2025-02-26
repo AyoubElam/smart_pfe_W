@@ -1,8 +1,8 @@
 {
   "/page": "app/page.js",
   "/PlanifierSoutenance/page": "app/PlanifierSoutenance/page.js",
-  "/GestionJurys/page": "app/GestionJurys/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/ListeSoutenances/page": "app/ListeSoutenances/page.js",
-  "/edit_soutenance/[id]/page": "app/edit_soutenance/[id]/page.js"
+  "/GestionJurys/page": "app/GestionJurys/page.js",
+  "/etu_soutenance/page": "app/etu_soutenance/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

@@ -136,6 +136,7 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ListeSoutenances$2f$Filters$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/ListeSoutenances/Filters.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ListeSoutenances$2f$SoutenanceTable$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/components/ListeSoutenances/SoutenanceTable.tsx [app-ssr] (ecmascript)");
 "use client";
@@ -143,11 +144,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ListeSo
 ;
 ;
 ;
+;
 function ListeSoutenances() {
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const [soutenances, setSoutenances] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    // Use `useEffect` to fetch data after the initial render
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const fetchSoutenances = async ()=>{
             try {
@@ -164,13 +166,19 @@ function ListeSoutenances() {
             }
         };
         fetchSoutenances();
-    }, []); // Empty dependency array to run this only on component mount
+    }, []);
+    const handleFilter = (filters)=>{
+        console.log("Filters applied: ", filters);
+    };
+    const handleEdit = (id)=>{
+        router.push(`/edit-soutenance/${id}`);
+    };
     if (loading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             children: "Loading..."
         }, void 0, false, {
             fileName: "[project]/app/pages/ListeSoutenances.tsx",
-            lineNumber: 44,
+            lineNumber: 53,
             columnNumber: 12
         }, this);
     }
@@ -183,14 +191,10 @@ function ListeSoutenances() {
             ]
         }, void 0, true, {
             fileName: "[project]/app/pages/ListeSoutenances.tsx",
-            lineNumber: 48,
+            lineNumber: 57,
             columnNumber: 12
         }, this);
     }
-    const handleFilter = (filters)=>{
-        // Implement filtering logic here based on filters
-        console.log("Filters applied: ", filters);
-    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-6",
         children: [
@@ -199,27 +203,28 @@ function ListeSoutenances() {
                 children: "📋 Liste des Soutenances"
             }, void 0, false, {
                 fileName: "[project]/app/pages/ListeSoutenances.tsx",
-                lineNumber: 58,
+                lineNumber: 62,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ListeSoutenances$2f$Filters$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                 onFilter: handleFilter
             }, void 0, false, {
                 fileName: "[project]/app/pages/ListeSoutenances.tsx",
-                lineNumber: 59,
+                lineNumber: 63,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ListeSoutenances$2f$SoutenanceTable$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                soutenances: soutenances
+                soutenances: soutenances,
+                onEdit: handleEdit
             }, void 0, false, {
                 fileName: "[project]/app/pages/ListeSoutenances.tsx",
-                lineNumber: 60,
+                lineNumber: 64,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/pages/ListeSoutenances.tsx",
-        lineNumber: 57,
+        lineNumber: 61,
         columnNumber: 5
     }, this);
 }

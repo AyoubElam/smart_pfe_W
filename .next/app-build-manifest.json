@@ -1,6 +1,6 @@
 {
   "pages": {
-    "/page": [
+    "/etu_soutenance/page": [
       "static/chunks/_22d2ba._.js",
       "static/chunks/app_favicon_ico_mjs_53e3fe._.js",
       "static/chunks/[root of the server]__9d1267._.css",
@@ -12,11 +12,9 @@
       "static/chunks/node_modules_5dabb8._.js",
       "static/chunks/app_6c650d._.js",
       "static/chunks/app_layout_tsx_61af54._.js",
-      "static/chunks/node_modules_lodash_706a43._.js",
-      "static/chunks/node_modules_recharts_es6_17fc07._.js",
-      "static/chunks/node_modules_2ef4a3._.js",
-      "static/chunks/app_225c58._.js",
-      "static/chunks/app_page_tsx_337770._.js",
+      "static/chunks/node_modules_e382d4._.js",
+      "static/chunks/_6fc3f1._.js",
+      "static/chunks/app_etu_soutenance_page_tsx_337770._.js",
       "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
       "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
       "static/chunks/node_modules_next_dist_client_523921._.js",
@@ -74,7 +72,7 @@
       "static/chunks/_e69f0d._.js",
       "static/chunks/_d95469._.js"
     ],
-    "/GestionJurys/page": [
+    "/_not-found/page": [
       "static/chunks/_22d2ba._.js",
       "static/chunks/app_favicon_ico_mjs_53e3fe._.js",
       "static/chunks/[root of the server]__9d1267._.css",
@@ -86,9 +84,6 @@
       "static/chunks/node_modules_5dabb8._.js",
       "static/chunks/app_6c650d._.js",
       "static/chunks/app_layout_tsx_61af54._.js",
-      "static/chunks/node_modules_505eb5._.js",
-      "static/chunks/_86c1fb._.js",
-      "static/chunks/app_GestionJurys_page_tsx_337770._.js",
       "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
       "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
       "static/chunks/node_modules_next_dist_client_523921._.js",
@@ -98,7 +93,7 @@
       "static/chunks/_e69f0d._.js",
       "static/chunks/_d95469._.js"
     ],
-    "/etu_soutenance/page": [
+    "/edit_soutenance/[id]/page": [
       "static/chunks/_22d2ba._.js",
       "static/chunks/app_favicon_ico_mjs_53e3fe._.js",
       "static/chunks/[root of the server]__9d1267._.css",
@@ -110,9 +105,9 @@
       "static/chunks/node_modules_5dabb8._.js",
       "static/chunks/app_6c650d._.js",
       "static/chunks/app_layout_tsx_61af54._.js",
-      "static/chunks/node_modules_79b76f._.js",
-      "static/chunks/_6fc3f1._.js",
-      "static/chunks/app_etu_soutenance_page_tsx_337770._.js",
+      "static/chunks/_c498a1._.js",
+      "static/chunks/node_modules_a46398._.js",
+      "static/chunks/app_edit_soutenance_[id]_page_tsx_337770._.js",
       "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
       "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
       "static/chunks/node_modules_next_dist_client_523921._.js",

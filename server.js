@@ -1,22 +1,22 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import express from "express";
 import cors from "cors";
 import jurys from "./app/pages/api/jurys.js";
 import groups from "./app/pages/api/groups.js";
 import soutenance from "./app/pages/api/soutenance.js";
+import etu_sout from "./app/pages/api/etu_sout.js"; // ✅ Added missing import
 
 const app = express();
 
-// ✅ Middleware
+// Middleware
 app.use(cors({
   origin: "http://localhost:3000", // Allow frontend requests
-  methods: ["GET", "POST", "PUT", "DELETE"], // Ensure PUT is included
+  methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
-app.use(express.json()); // ✅ Add this to handle JSON requests
-app.use(express.urlencoded({ extended: true })); // ✅ Handle form data
+app.use(express.json()); // Handle JSON requests
+app.use(express.urlencoded({ extended: true })); // Handle form data
 
-// ✅ Handle Preflight (OPTIONS) Requests
+// Handle Preflight (OPTIONS) Requests
 app.options("/api/soutenance/:id", (req, res) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.sendStatus(200);
@@ -26,6 +26,7 @@ app.options("/api/soutenance/:id", (req, res) => {
 app.use("/api/jurys", jurys);
 app.use("/api/groups", groups);
 app.use("/api/soutenance", soutenance);
+app.use("/api/etu_sout", etu_sout);
 
 // Start the server
 app.listen(5000, () => {

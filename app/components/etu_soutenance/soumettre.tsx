@@ -2,7 +2,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect, useCallback } from "react"
 import { useSearchParams } from "next/navigation"
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card"
@@ -17,6 +16,7 @@ import {
   Upload,
   CheckCircle2,
   AlertCircle,
+  Trash2, // Added Trash2 icon
 } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Label } from "@/components/ui/label"
@@ -85,7 +85,6 @@ export default function SoumettrePage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, setFile: (file: File | null) => void) => {
     if (e.target.files?.[0]) {
       setFile(e.target.files[0])
-      // Simulate progress for better UX
       setUploadProgress(0)
       const timer = setInterval(() => {
         setUploadProgress((prev) => {
@@ -150,6 +149,33 @@ export default function SoumettrePage() {
       setIsSubmitting(false)
     }
   }
+
+  // New handleDelete function
+  const handleDelete = async (idPFE: number, idLivrable: number) => {
+    if (!confirm("Êtes-vous sûr de vouloir supprimer ce document ?")) {
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/livrable/delete-document", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ idEtudiant, idPFE, idLivrable }),
+      });
+
+      if (response.ok) {
+        fetchDocuments(); // Refresh the document list
+      } else {
+        const errorText = await response.text();
+        alert(`Erreur lors de la suppression : ${errorText}`);
+      }
+    } catch (error) {
+      console.error("Erreur de connexion:", error);
+      alert("Erreur de connexion au serveur");
+    }
+  };
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -222,17 +248,27 @@ export default function SoumettrePage() {
                         </Badge>
                       </div>
                     </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      asChild
-                      className="hover:bg-primary/5 hover:text-primary transition-colors"
-                    >
-                      <a href={`http://localhost:5000${doc.fichier}`} download>
-                        <Download className="h-4 w-4 mr-2" />
-                        Télécharger
-                      </a>
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        asChild
+                        className="hover:bg-primary/5 hover:text-primary transition-colors"
+                      >
+                        <a href={`http://localhost:5000${doc.fichier}`} download>
+                          <Download className="h-4 w-4 mr-2" />
+                          Télécharger
+                        </a>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => handleDelete(doc.idPFE, doc.idLivrable)}
+                        className="text-red-500 hover:text-red-700"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -312,4 +348,3 @@ export default function SoumettrePage() {
     </div>
   )
 }
-

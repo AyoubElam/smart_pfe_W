@@ -461,6 +461,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-client] (ecmascript) <export default as AlertCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$refresh$2d$cw$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__RefreshCw$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/refresh-cw.js [app-client] (ecmascript) <export default as RefreshCw>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/download.js [app-client] (ecmascript) <export default as Download>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/upload.js [app-client] (ecmascript) <export default as Upload>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/loader.js [app-client] (ecmascript) <export default as Loader>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileUp$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/file-up.js [app-client] (ecmascript) <export default as FileUp>");
@@ -543,7 +544,6 @@ function SoumettrePage() {
     const handleFileChange = (e, setFile)=>{
         if (e.target.files?.[0]) {
             setFile(e.target.files[0]);
-            // Simulate progress for better UX
             setUploadProgress(0);
             const timer = setInterval(()=>{
                 setUploadProgress((prev)=>{
@@ -605,6 +605,34 @@ function SoumettrePage() {
             setIsSubmitting(false);
         }
     };
+    // New handleDelete function
+    const handleDelete = async (idPFE, idLivrable)=>{
+        if (!confirm("Êtes-vous sûr de vouloir supprimer ce document ?")) {
+            return;
+        }
+        try {
+            const response = await fetch("http://localhost:5000/api/livrable/delete-document", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idEtudiant,
+                    idPFE,
+                    idLivrable
+                })
+            });
+            if (response.ok) {
+                fetchDocuments(); // Refresh the document list
+            } else {
+                const errorText = await response.text();
+                alert(`Erreur lors de la suppression : ${errorText}`);
+            }
+        } catch (error) {
+            console.error("Erreur de connexion:", error);
+            alert("Erreur de connexion au serveur");
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "container mx-auto py-8 px-4",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -618,7 +646,7 @@ function SoumettrePage() {
                             children: "Soumettre des documents"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                            lineNumber: 158,
+                            lineNumber: 184,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
@@ -626,13 +654,13 @@ function SoumettrePage() {
                             children: "Soumettez vos documents de projet pour évaluation"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                            lineNumber: 161,
+                            lineNumber: 187,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                    lineNumber: 157,
+                    lineNumber: 183,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -645,7 +673,7 @@ function SoumettrePage() {
                                     className: "h-4 w-4"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 168,
+                                    lineNumber: 194,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertTitle"], {
@@ -653,20 +681,20 @@ function SoumettrePage() {
                                     children: "Succès"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 169,
+                                    lineNumber: 195,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDescription"], {
                                     children: "Documents soumis avec succès!"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 170,
+                                    lineNumber: 196,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                            lineNumber: 167,
+                            lineNumber: 193,
                             columnNumber: 13
                         }, this),
                         submitError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Alert"], {
@@ -676,7 +704,7 @@ function SoumettrePage() {
                                     className: "h-4 w-4"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 176,
+                                    lineNumber: 202,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertTitle"], {
@@ -684,20 +712,20 @@ function SoumettrePage() {
                                     children: "Erreur"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 177,
+                                    lineNumber: 203,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDescription"], {
                                     children: submitError
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 178,
+                                    lineNumber: 204,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                            lineNumber: 175,
+                            lineNumber: 201,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -711,7 +739,7 @@ function SoumettrePage() {
                                             children: "Documents Soumis"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 184,
+                                            lineNumber: 210,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -725,20 +753,20 @@ function SoumettrePage() {
                                                     className: `h-3.5 w-3.5 mr-1.5 ${isLoading ? "animate-spin" : ""}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                    lineNumber: 192,
+                                                    lineNumber: 218,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Actualiser"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 211,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 183,
+                                    lineNumber: 209,
                                     columnNumber: 13
                                 }, this),
                                 isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -748,7 +776,7 @@ function SoumettrePage() {
                                             className: "h-5 w-5 animate-spin mr-2 text-primary"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 199,
+                                            lineNumber: 225,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -756,13 +784,13 @@ function SoumettrePage() {
                                             children: "Chargement des documents..."
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 200,
+                                            lineNumber: 226,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 198,
+                                    lineNumber: 224,
                                     columnNumber: 15
                                 }, this) : fetchError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Alert"], {
                                     variant: "destructive",
@@ -772,20 +800,20 @@ function SoumettrePage() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 204,
+                                            lineNumber: 230,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDescription"], {
                                             children: fetchError
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 205,
+                                            lineNumber: 231,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 229,
                                     columnNumber: 15
                                 }, this) : submittedDocuments.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "space-y-3",
@@ -800,7 +828,7 @@ function SoumettrePage() {
                                                             children: doc.idLivrable in livrableIcons && livrableIcons[doc.idLivrable]
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                            lineNumber: 215,
+                                                            lineNumber: 241,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -811,7 +839,7 @@ function SoumettrePage() {
                                                                     children: livrableNames[doc.idLivrable]
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                                    lineNumber: 219,
+                                                                    lineNumber: 245,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -820,58 +848,84 @@ function SoumettrePage() {
                                                                     children: "Soumis"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                                    lineNumber: 220,
+                                                                    lineNumber: 246,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                            lineNumber: 218,
+                                                            lineNumber: 244,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                    lineNumber: 214,
+                                                    lineNumber: 240,
                                                     columnNumber: 21
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    variant: "ghost",
-                                                    size: "sm",
-                                                    asChild: true,
-                                                    className: "hover:bg-primary/5 hover:text-primary transition-colors",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                        href: `http://localhost:5000${doc.fichier}`,
-                                                        download: true,
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__["Download"], {
-                                                                className: "h-4 w-4 mr-2"
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex gap-2",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                            variant: "ghost",
+                                                            size: "sm",
+                                                            asChild: true,
+                                                            className: "hover:bg-primary/5 hover:text-primary transition-colors",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                                href: `http://localhost:5000${doc.fichier}`,
+                                                                download: true,
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__["Download"], {
+                                                                        className: "h-4 w-4 mr-2"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
+                                                                        lineNumber: 259,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    "Télécharger"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
+                                                                lineNumber: 258,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
+                                                            lineNumber: 252,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                            variant: "ghost",
+                                                            size: "sm",
+                                                            onClick: ()=>handleDelete(doc.idPFE, doc.idLivrable),
+                                                            className: "text-red-500 hover:text-red-700",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
+                                                                className: "h-4 w-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                                lineNumber: 232,
+                                                                lineNumber: 269,
                                                                 columnNumber: 25
-                                                            }, this),
-                                                            "Télécharger"
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                        lineNumber: 231,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                }, void 0, false, {
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
+                                                            lineNumber: 263,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                    lineNumber: 225,
+                                                    lineNumber: 251,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, `${doc.idPFE}-${doc.idLivrable}`, true, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 210,
+                                            lineNumber: 236,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 234,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex flex-col items-center justify-center p-8 bg-muted/10 rounded-xl border border-border/40",
@@ -880,7 +934,7 @@ function SoumettrePage() {
                                             className: "h-8 w-8 text-muted-foreground mb-2"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 241,
+                                            lineNumber: 277,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -888,26 +942,26 @@ function SoumettrePage() {
                                             children: "Aucun document soumis pour le moment."
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 242,
+                                            lineNumber: 278,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 240,
+                                    lineNumber: 276,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                            lineNumber: 182,
+                            lineNumber: 208,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Separator"], {
                             className: "my-8"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                            lineNumber: 247,
+                            lineNumber: 283,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -918,7 +972,7 @@ function SoumettrePage() {
                                     children: "Soumettre de nouveaux documents"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 250,
+                                    lineNumber: 286,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -939,20 +993,20 @@ function SoumettrePage() {
                                                                 className: "h-4 w-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                                lineNumber: 255,
+                                                                lineNumber: 291,
                                                                 columnNumber: 39
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileIcon$3e$__["FileIcon"], {
                                                                 className: "h-4 w-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                                lineNumber: 255,
+                                                                lineNumber: 291,
                                                                 columnNumber: 74
                                                             }, this),
                                                             type === "pdf" ? "Document PDF" : "Présentation"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                        lineNumber: 254,
+                                                        lineNumber: 290,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -967,7 +1021,7 @@ function SoumettrePage() {
                                                                 required: true
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                                lineNumber: 259,
+                                                                lineNumber: 295,
                                                                 columnNumber: 21
                                                             }, this),
                                                             (type === "pdf" && pdfFile || type === "presentation" && presentationFile) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -977,7 +1031,7 @@ function SoumettrePage() {
                                                                         children: type === "pdf" ? pdfFile?.name.length > 20 ? `${pdfFile?.name.substring(0, 20)}...` : pdfFile?.name : presentationFile?.name.length > 20 ? `${presentationFile?.name.substring(0, 20)}...` : presentationFile?.name
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                                        lineNumber: 275,
+                                                                        lineNumber: 311,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$progress$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Progress"], {
@@ -985,7 +1039,7 @@ function SoumettrePage() {
                                                                         className: "h-1 absolute bottom-0 left-0 right-0"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                                        lineNumber: 284,
+                                                                        lineNumber: 320,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
@@ -993,13 +1047,13 @@ function SoumettrePage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                        lineNumber: 258,
+                                                        lineNumber: 294,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, type, true, {
                                                 fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                lineNumber: 253,
+                                                lineNumber: 289,
                                                 columnNumber: 17
                                             }, this)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1012,7 +1066,7 @@ function SoumettrePage() {
                                                     className: "absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0    animate-shimmer -translate-x-full group-hover:translate-x-full transition-all duration-1000"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                    lineNumber: 292,
+                                                    lineNumber: 328,
                                                     columnNumber: 17
                                                 }, this),
                                                 isSubmitting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1021,7 +1075,7 @@ function SoumettrePage() {
                                                             className: "mr-2 h-5 w-5 animate-spin"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                            lineNumber: 298,
+                                                            lineNumber: 334,
                                                             columnNumber: 21
                                                         }, this),
                                                         "Soumission en cours..."
@@ -1032,7 +1086,7 @@ function SoumettrePage() {
                                                             className: "mr-2 h-5 w-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                                            lineNumber: 303,
+                                                            lineNumber: 339,
                                                             columnNumber: 21
                                                         }, this),
                                                         "Soumettre les documents"
@@ -1041,36 +1095,36 @@ function SoumettrePage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                            lineNumber: 291,
+                                            lineNumber: 327,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                                    lineNumber: 251,
+                                    lineNumber: 287,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                            lineNumber: 249,
+                            lineNumber: 285,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-                    lineNumber: 165,
+                    lineNumber: 191,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-            lineNumber: 156,
+            lineNumber: 182,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/components/etu_soutenance/soumettre.tsx",
-        lineNumber: 155,
+        lineNumber: 181,
         columnNumber: 5
     }, this);
 }

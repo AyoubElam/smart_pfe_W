@@ -272,7 +272,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-__turbopack_esm__({
+/* eslint-disable react/no-unescaped-entities */ __turbopack_esm__({
     "default": (()=>SoutenancesPage)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
@@ -317,7 +317,7 @@ function getStatusConfig(status) {
                     className: "w-3.5 h-3.5"
                 }, void 0, false, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 51,
+                    lineNumber: 52,
                     columnNumber: 15
                 }, this),
                 text: "Planifié"
@@ -331,7 +331,7 @@ function getStatusConfig(status) {
                     className: "w-3.5 h-3.5"
                 }, void 0, false, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 59,
+                    lineNumber: 60,
                     columnNumber: 15
                 }, this),
                 text: "Terminé"
@@ -345,7 +345,7 @@ function getStatusConfig(status) {
                     className: "w-3.5 h-3.5"
                 }, void 0, false, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 67,
+                    lineNumber: 68,
                     columnNumber: 15
                 }, this),
                 text: "En attente"
@@ -359,7 +359,7 @@ function getStatusConfig(status) {
                     className: "w-3.5 h-3.5"
                 }, void 0, false, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 75,
+                    lineNumber: 76,
                     columnNumber: 15
                 }, this),
                 text: "Annulé"
@@ -373,7 +373,7 @@ function getStatusConfig(status) {
                     className: "w-3.5 h-3.5"
                 }, void 0, false, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 83,
+                    lineNumber: 84,
                     columnNumber: 15
                 }, this),
                 text: "Inconnu"
@@ -407,7 +407,7 @@ function StatusBadge({ status }) {
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-        lineNumber: 93,
+        lineNumber: 94,
         columnNumber: 5
     }, this);
 }
@@ -469,17 +469,17 @@ function SoutenancesPage() {
                             className: "h-8 w-3/4"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 176,
+                            lineNumber: 177,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                        lineNumber: 175,
+                        lineNumber: 176,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 174,
+                    lineNumber: 175,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -502,33 +502,33 @@ function SoutenancesPage() {
                                                         className: "h-6 w-24"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                        lineNumber: 188,
+                                                        lineNumber: 189,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$skeleton$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Skeleton"], {
                                                         className: "h-6 w-20"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                        lineNumber: 189,
+                                                        lineNumber: 190,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                lineNumber: 187,
+                                                lineNumber: 188,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$skeleton$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Skeleton"], {
                                                 className: "h-10 w-40"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                lineNumber: 191,
+                                                lineNumber: 192,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                        lineNumber: 186,
+                                        lineNumber: 187,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -542,34 +542,34 @@ function SoutenancesPage() {
                                                 className: "h-6 w-full"
                                             }, j, false, {
                                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                lineNumber: 195,
+                                                lineNumber: 196,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 194,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                lineNumber: 182,
+                                lineNumber: 183,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                        lineNumber: 180,
+                        lineNumber: 181,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 179,
+                    lineNumber: 180,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-            lineNumber: 173,
+            lineNumber: 174,
             columnNumber: 7
         }, this);
     }
@@ -585,7 +585,7 @@ function SoutenancesPage() {
                             className: "h-12 w-12 text-destructive"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 211,
+                            lineNumber: 212,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -593,7 +593,7 @@ function SoutenancesPage() {
                             children: "Erreur de chargement"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 212,
+                            lineNumber: 213,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -601,7 +601,7 @@ function SoutenancesPage() {
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 213,
+                            lineNumber: 214,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -611,23 +611,23 @@ function SoutenancesPage() {
                             children: "Réessayer"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 214,
+                            lineNumber: 215,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 210,
+                    lineNumber: 211,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                lineNumber: 209,
+                lineNumber: 210,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-            lineNumber: 208,
+            lineNumber: 209,
             columnNumber: 7
         }, this);
     }
@@ -649,13 +649,13 @@ function SoutenancesPage() {
                                     children: groupName
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                    lineNumber: 233,
+                                    lineNumber: 234,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 231,
+                            lineNumber: 232,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -667,31 +667,31 @@ function SoutenancesPage() {
                                     className: "h-4 w-4"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                    lineNumber: 240,
+                                    lineNumber: 241,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: "Soumettre des documents"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                    lineNumber: 241,
+                                    lineNumber: 242,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 235,
+                            lineNumber: 236,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 230,
+                    lineNumber: 231,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                lineNumber: 229,
+                lineNumber: 230,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -703,7 +703,7 @@ function SoutenancesPage() {
                             className: "h-12 w-12 text-muted-foreground"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 248,
+                            lineNumber: 249,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -711,7 +711,7 @@ function SoutenancesPage() {
                             children: "Aucune soutenance planifiée"
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 249,
+                            lineNumber: 250,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -719,13 +719,13 @@ function SoutenancesPage() {
                             children: "Vous n'avez pas encore de soutenances programmées."
                         }, void 0, false, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 252,
+                            lineNumber: 253,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 247,
+                    lineNumber: 248,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex flex-col items-center justify-center space-y-6 max-w-xl mx-auto",
@@ -738,19 +738,19 @@ function SoutenancesPage() {
                                         status: soutenance.status
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                        lineNumber: 265,
+                                        lineNumber: 266,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                    lineNumber: 264,
+                                    lineNumber: 265,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute -top-10 -right-10 w-20 h-20 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-all duration-500"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                    lineNumber: 269,
+                                    lineNumber: 270,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -764,12 +764,12 @@ function SoutenancesPage() {
                                                 children: soutenance.nomGroupe
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                lineNumber: 273,
+                                                lineNumber: 274,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                            lineNumber: 272,
+                                            lineNumber: 273,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -784,12 +784,12 @@ function SoutenancesPage() {
                                                                 className: "h-5 w-5 text-primary"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                lineNumber: 284,
+                                                                lineNumber: 285,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                            lineNumber: 283,
+                                                            lineNumber: 284,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -799,7 +799,7 @@ function SoutenancesPage() {
                                                                     children: "Date"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                    lineNumber: 287,
+                                                                    lineNumber: 288,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -809,19 +809,19 @@ function SoutenancesPage() {
                                                                     })
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                    lineNumber: 290,
+                                                                    lineNumber: 291,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                            lineNumber: 286,
+                                                            lineNumber: 287,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                    lineNumber: 282,
+                                                    lineNumber: 283,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -833,12 +833,12 @@ function SoutenancesPage() {
                                                                 className: "h-5 w-5 text-primary"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                lineNumber: 300,
+                                                                lineNumber: 301,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                            lineNumber: 299,
+                                                            lineNumber: 300,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -848,7 +848,7 @@ function SoutenancesPage() {
                                                                     children: "Heure"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                    lineNumber: 303,
+                                                                    lineNumber: 304,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -856,19 +856,19 @@ function SoutenancesPage() {
                                                                     children: soutenance.time
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                    lineNumber: 306,
+                                                                    lineNumber: 307,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                            lineNumber: 302,
+                                                            lineNumber: 303,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                    lineNumber: 298,
+                                                    lineNumber: 299,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -880,12 +880,12 @@ function SoutenancesPage() {
                                                                 className: "h-5 w-5 text-primary"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                lineNumber: 312,
+                                                                lineNumber: 313,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                            lineNumber: 311,
+                                                            lineNumber: 312,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -895,7 +895,7 @@ function SoutenancesPage() {
                                                                     children: "Lieu"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                    lineNumber: 315,
+                                                                    lineNumber: 316,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -903,19 +903,19 @@ function SoutenancesPage() {
                                                                     children: soutenance.location
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                    lineNumber: 318,
+                                                                    lineNumber: 319,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                            lineNumber: 314,
+                                                            lineNumber: 315,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                    lineNumber: 310,
+                                                    lineNumber: 311,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -927,12 +927,12 @@ function SoutenancesPage() {
                                                                 className: "h-5 w-5 text-primary"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                lineNumber: 324,
+                                                                lineNumber: 325,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                            lineNumber: 323,
+                                                            lineNumber: 324,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -942,7 +942,7 @@ function SoutenancesPage() {
                                                                     children: "Jury"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                    lineNumber: 327,
+                                                                    lineNumber: 328,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -950,53 +950,53 @@ function SoutenancesPage() {
                                                                     children: formatJuryNames(soutenance.juryNames)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                                    lineNumber: 330,
+                                                                    lineNumber: 331,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                            lineNumber: 326,
+                                                            lineNumber: 327,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                                    lineNumber: 322,
+                                                    lineNumber: 323,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                            lineNumber: 281,
+                                            lineNumber: 282,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                                    lineNumber: 271,
+                                    lineNumber: 272,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, soutenance.idSoutenance, true, {
                             fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                            lineNumber: 259,
+                            lineNumber: 260,
                             columnNumber: 15
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                    lineNumber: 257,
+                    lineNumber: 258,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-                lineNumber: 245,
+                lineNumber: 246,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/etu_soutenance/table_sout.tsx",
-        lineNumber: 228,
+        lineNumber: 229,
         columnNumber: 5
     }, this);
 }

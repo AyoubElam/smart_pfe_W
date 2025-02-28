@@ -1,9 +1,10 @@
 "use client"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation" // Add this import
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, MapPin, Users, Edit, CalendarClock, CheckCircle2, XCircle, AlertCircle } from "lucide-react"
+import { Calendar, Clock, MapPin, Users, CalendarClock, CheckCircle2, XCircle, AlertCircle, FileUp } from "lucide-react"
 import { format, parseISO } from "date-fns"
 import { fr } from "date-fns/locale"
 
@@ -115,6 +116,7 @@ export default function SoutenancesPage() {
   const [soutenances, setSoutenances] = useState<Soutenance[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter() // Add router hook
 
   const studentGroupId = 2 // Replace with dynamic logic later
 
@@ -169,11 +171,15 @@ export default function SoutenancesPage() {
               key={soutenance.idSoutenance}
               className="bg-card rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow relative"
             >
-              {/* Edit button positioned at top right */}
-              <div className="absolute top-4 right-4">
-                <Button variant="outline" size="icon" className="rounded-full h-8 w-8">
-                  <Edit className="h-4 w-4" />      
-                  <span className="sr-only">Edit</span>
+              {/* Buttons positioned at top right */}
+              <div className="absolute top-4 right-4 flex gap-3 items-center">
+                <Button
+                variant="outline"
+                  className="rounded-md h-12 px-4 flex items-center gap-2"
+                  onClick={() => router.push("/soumettre")}
+                >
+                  <FileUp className="h-8 w-8 text-black" />
+                  <span className="text-base font-medium">Soumettre des documents</span>
                 </Button>
               </div>
 

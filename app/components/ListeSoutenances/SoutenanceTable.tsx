@@ -252,7 +252,7 @@ export default function SoutenancesPage() {
 
   const handleEdit = (soutenance: Soutenance) => {
     console.log("Soutenance to edit:", soutenance);
-    router.push(`/edit_soutenance/${soutenance.idSoutenance}`);
+    router.push(`/pages/edit_soutenance/${soutenance.idSoutenance}`);
   };
 
   const [error, setError] = useState<string | null>(null);
@@ -278,7 +278,7 @@ export default function SoutenancesPage() {
       // Rafraîchir la liste
       await fetchSoutenances();
       console.log("✅ Soutenance supprimée avec succès!");
-      router.push("/ListeSoutenances"); // Redirect to list page after successful deletion
+      router.push("/pages/ListeSoutenances"); // Redirect to list page after successful deletion
     } catch (error) {
       const errorMessage =
         error instanceof Error

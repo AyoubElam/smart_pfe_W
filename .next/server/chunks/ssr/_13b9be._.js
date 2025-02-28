@@ -699,7 +699,7 @@ function EditSoutenancePage({ params }) {
                 throw new Error(`Erreur serveur: ${errorData}`);
             }
             console.log("✅ Soutenance mise à jour avec succès!");
-            router.push("/ListeSoutenances");
+            router.push("/pages/ListeSoutenances");
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue";
             console.error("❌ Erreur de mise à jour:", errorMessage);

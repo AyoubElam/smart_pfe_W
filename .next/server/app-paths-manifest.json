@@ -1,8 +1,10 @@
 {
-  "/etu_soutenance/page": "app/etu_soutenance/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/PlanifierSoutenance/page": "app/PlanifierSoutenance/page.js",
-  "/ListeSoutenances/page": "app/ListeSoutenances/page.js",
+  "/page": "app/page.js",
+  "/pages/ListeSoutenances/page": "app/pages/ListeSoutenances/page.js",
+  "/pages/PlanifierSoutenance/page": "app/pages/PlanifierSoutenance/page.js",
+  "/pages/edit_soutenance/[id]/page": "app/pages/edit_soutenance/[id]/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/edit_soutenance/[id]/page": "app/edit_soutenance/[id]/page.js"
+  "/pages/GestionJurys/page": "app/pages/GestionJurys/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/pages/etu_soutenance/page": "app/pages/etu_soutenance/page.js"
 }

@@ -1,22 +1,36 @@
-"use client"
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation" // Add this import
-import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Calendar, Clock, MapPin, Users, CalendarClock, CheckCircle2, XCircle, AlertCircle, FileUp } from "lucide-react"
-import { format, parseISO } from "date-fns"
-import { fr } from "date-fns/locale"
+"use client";
+
+import type React from "react";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Calendar,
+  Clock,
+  MapPin,
+  Users,
+  CalendarClock,
+  CheckCircle2,
+  XCircle,
+  AlertCircle,
+  FileUp,
+} from "lucide-react";
+import { format, parseISO } from "date-fns";
+import { fr } from "date-fns/locale";
 
 interface Soutenance {
-  idSoutenance: number
-  date: string
-  time: string
-  location: string
-  nomGroupe: string
-  juryNames: string[] | string | null
-  status: string
-  idGroupe: number 
+  idSoutenance: number;
+  date: string;
+  time: string;
+  location: string;
+  nomGroupe: string;
+  juryNames: string[] | string | null;
+  status: string;
+  idGroupe: number;
 }
 
 interface StatusConfig {
@@ -108,23 +122,28 @@ const formatJuryNames = (juryNames: string[] | string | null) => {
   } else if (typeof juryNames === "string") {
     return juryNames;
   } else {
-    return "No jury assigned";
+    return "Aucun jury assigné";
   }
-}
+};
 
 export default function SoutenancesPage() {
-  const [soutenances, setSoutenances] = useState<Soutenance[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const router = useRouter() // Add router hook
+  const [soutenances, setSoutenances] = useState<Soutenance[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
-  const studentGroupId = 2 // Replace with dynamic logic later
+  const studentGroupId = 2; // Replace with dynamic logic later
 
   useEffect(() => {
     const fetchSoutenances = async () => {
       try {
-        console.log("Fetching from:", `/api/etu_sout/group-only/${studentGroupId}`);
-        const response = await fetch(`http://localhost:5000/api/etu_sout/group-only/${studentGroupId}`);
+        console.log(
+          "Fetching from:",
+          `/api/etu_sout/group-only/${studentGroupId}`
+        );
+        const response = await fetch(
+          `http://localhost:5000/api/etu_sout/group-only/${studentGroupId}`
+        );
         console.log("Response status:", response.status);
         if (!response.ok) {
           throw new Error("Failed to fetch soutenances");
@@ -142,84 +161,184 @@ export default function SoutenancesPage() {
         setLoading(false);
       }
     };
-  
+
     fetchSoutenances();
-  }, [studentGroupId]);
+  }, []);
+
+  const groupName =
+    soutenances.length > 0 ? soutenances[0].nomGroupe : "Inconnu";
 
   if (loading) {
-    return <div>Loading...</div>
-  }
-  if (error) {
-    return <div>Error: {error}</div>
+    return (
+      <Card className="w-full shadow-md">
+        <CardHeader className="pb-4 border-b">
+          <div className="flex items-center justify-between">
+            <Skeleton className="h-8 w-3/4" />
+          </div>
+        </CardHeader>
+        <CardContent className="p-6">
+          <div className="flex flex-col items-center justify-center space-y-6 max-w-xl mx-auto">
+            {[1, 2].map((i) => (
+              <div
+                key={i}
+                className="bg-card rounded-lg shadow-sm border p-6 w-full"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex gap-2">
+                    <Skeleton className="h-6 w-24" />
+                    <Skeleton className="h-6 w-20" />
+                  </div>
+                  <Skeleton className="h-10 w-40" />
+                </div>
+                <div className="flex flex-col space-y-4">
+                  {[1, 2, 3, 4].map((j) => (
+                    <Skeleton key={j} className="h-6 w-full" />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    );
   }
 
-  const groupName = soutenances.length > 0 ? soutenances[0].nomGroupe : "Unknown"
+  if (error) {
+    return (
+      <Card className="w-full shadow-md">
+        <CardContent className="p-6">
+          <div className="flex flex-col items-center justify-center text-center p-8 space-y-4">
+            <AlertCircle className="h-12 w-12 text-destructive" />
+            <h3 className="text-xl font-semibold">Erreur de chargement</h3>
+            <p className="text-muted-foreground">{error}</p>
+            <Button
+              variant="outline"
+              onClick={() => window.location.reload()}
+              className="mt-2"
+            >
+              Réessayer
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
-    <Card className="w-full shadow-md">
-      <CardHeader className="pb-4 border-b justify-center">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-2xl font-bold justify-center">
-            Soutenances de votre groupe: <span className="text-primary">{groupName}</span>
+    <Card className="w-full shadow-lg border-0 bg-gradient-to-b from-background to-muted/20">
+      <CardHeader className="pb-4 border-b border-border/40">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <CardTitle className="text-2xl font-bold text-center md:text-left">
+            Soutenances du groupe{" "}
+            <span className="text-primary font-extrabold">{groupName}</span>
           </CardTitle>
+          <Button
+            variant="default"
+            className="rounded-full h-10 px-4 flex items-center gap-2 shadow-md"
+            onClick={() => router.push("/pages/soumettre")}
+          >
+            <FileUp className="h-4 w-4" />
+            <span>Soumettre des documents</span>
+          </Button>
         </div>
       </CardHeader>
       <CardContent className="p-6">
-        <div className="space-y-6"> 
-          {soutenances.map((soutenance) => (
-            <div
-              key={soutenance.idSoutenance}
-              className="bg-card rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow relative"
-            >
-              {/* Buttons positioned at top right */}
-              <div className="absolute top-4 right-4 flex gap-3 items-center">
-                <Button
-                variant="outline"
-                  className="rounded-md h-12 px-4 flex items-center gap-2"
-                  onClick={() => router.push("/soumettre")}
-                >
-                  <FileUp className="h-8 w-8 text-black" />
-                  <span className="text-base font-medium">Soumettre des documents</span>
-                </Button>
-              </div>
-
-              {/* Centered content */}
-              <div className="flex flex-col items-center text-center max-w-md mx-auto">
-                <div className="flex items-center gap-2 mb-4">
-                  <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
-                    {soutenance.nomGroupe}
-                  </Badge>
+        {soutenances.length === 0 ? (
+          <div className="flex flex-col items-center justify-center text-center p-8 space-y-4">
+            <CalendarClock className="h-12 w-12 text-muted-foreground" />
+            <h3 className="text-xl font-semibold">
+              Aucune soutenance planifiée
+            </h3>
+            <p className="text-muted-foreground">
+              Vous n'avez pas encore de soutenances programmées.
+            </p>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center space-y-6 max-w-xl mx-auto">
+            {soutenances.map((soutenance) => (
+              <div
+                key={soutenance.idSoutenance}
+                className="bg-card rounded-xl shadow-sm border border-border/50 p-6 hover:shadow-md transition-all duration-300 hover:translate-y-[-2px] relative overflow-hidden group w-full"
+              >
+                {/* Status badge positioned at top right with a slight rotation for style */}
+                <div className="absolute top-4 right-4">
                   <StatusBadge status={soutenance.status} />
                 </div>
 
-                <div className="grid grid-cols-1 gap-3 w-full max-w-xs">
-                  <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    <span className="font-medium">
-                      {format(parseISO(soutenance.date), "d MMMM yyyy", { locale: fr })}
-                    </span>
+                {/* Decorative element */}
+                <div className="absolute -top-10 -right-10 w-20 h-20 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-all duration-500"></div>
+
+                <div className="flex flex-col space-y-6">
+                  <div className="flex items-center gap-2">
+                    <Badge
+                      variant="secondary"
+                      className="px-3 py-1 text-sm font-medium"
+                    >
+                      {soutenance.nomGroupe}
+                    </Badge>
                   </div>
 
-                  <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                    <Clock className="h-4 w-4" />
-                    <span className="font-medium">{soutenance.time}</span>
-                  </div>
+                  <div className="grid grid-cols-1 gap-4">
+                    <div className="flex items-center gap-3 text-foreground">
+                      <div className="bg-primary/10 p-2 rounded-full">
+                        <Calendar className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-muted-foreground">
+                          Date
+                        </div>
+                        <div className="font-medium">
+                          {format(parseISO(soutenance.date), "d MMMM yyyy", {
+                            locale: fr,
+                          })}
+                        </div>
+                      </div>
+                    </div>
 
-                  <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                    <MapPin className="h-4 w-4" />
-                    <span className="font-medium">{soutenance.location}</span>
-                  </div>
+                    <div className="flex items-center gap-3 text-foreground">
+                      <div className="bg-primary/10 p-2 rounded-full">
+                        <Clock className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-muted-foreground">
+                          Heure
+                        </div>
+                        <div className="font-medium">{soutenance.time}</div>
+                      </div>
+                    </div>
 
-                  <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                    <Users className="h-4 w-4" />
-                    <span className="font-medium">{formatJuryNames(soutenance.juryNames)}</span>
+                    <div className="flex items-center gap-3 text-foreground">
+                      <div className="bg-primary/10 p-2 rounded-full">
+                        <MapPin className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-muted-foreground">
+                          Lieu
+                        </div>
+                        <div className="font-medium">{soutenance.location}</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3 text-foreground">
+                      <div className="bg-primary/10 p-2 rounded-full">
+                        <Users className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-muted-foreground">
+                          Jury
+                        </div>
+                        <div className="font-medium">
+                          {formatJuryNames(soutenance.juryNames)}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </CardContent>
     </Card>
-  )
+  );
 }
